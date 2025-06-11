@@ -1,0 +1,12 @@
+@use './vars' as *;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $font_family_main;
+    font-size: 16px;
+    color: $color_main;
+}
