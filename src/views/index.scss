@@ -1,0 +1,63 @@
+@use '../assets/scss/_vars.scss' as *;
+
+.home-page {
+    .monsters {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 1fr;
+        gap: 50px;
+        margin: 15px;
+        padding: 15px;
+        background: #d1d1d1;
+
+        &__list {
+            height: calc(100vh - 60px);
+            overflow: auto;
+        }
+
+        .monster {
+            padding-right: 15px;
+
+            &:not(:last-of-type) {
+                margin-bottom: 5px;
+            }
+
+            &__btn {
+                width: 100%;
+                height: 36px;
+                cursor: pointer;
+                transition: all $transition;
+            }
+        }
+
+        .selected-monster {
+            &__loading {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+            }
+
+            &__loading,
+            &__title {
+                font-family: $font_family_decor;
+                font-size: 36px;
+                font-weight: 600;
+            }
+
+            &__content {
+                display: flex;
+                gap: 25px;
+            }
+
+            &__title {
+                margin-bottom: 15px;
+            }
+
+            &__img {
+                display: block;
+                width: 400px;
+            }
+        }
+    }
+}
