@@ -1,0 +1,63 @@
+@use '../../assets/scss/_vars.scss' as *;
+
+.page-layout {
+    height: 100vh;
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 15px;
+        background: #ccc;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+
+        &-img {
+            display: block;
+            width: 50px;
+            height: 50px;
+        }
+
+        &-text {
+            font-family: $font_family_decor;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        a {
+            text-transform: uppercase;
+        }
+    }
+
+    &__main {
+        height: calc(100vh - 90px);
+        margin: 15px 0;
+        padding: 0 15px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+            background: #fff;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #bbb;
+            border-radius: 4px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+    }
+}

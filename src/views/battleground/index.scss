@@ -1,0 +1,41 @@
+@use '../../assets/scss/_vars.scss' as *;
+
+.battleground {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 20px;
+    height: inherit;
+
+    .creatures {
+        &__loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-family: $font_family_decor;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        &__creature:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .creatures,
+    .battle {
+        padding: 20px;
+        background: $color_white;
+    }
+
+    .battle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__logs {
+            flex-grow: 1;
+        }
+    }
+}

@@ -36,6 +36,10 @@ export const dndApiService = {
         return fetchFromApi('/monsters');
     },
 
+    getMonsterListByRating(rating = 0) {
+        return fetchFromApi(`/monsters?challenge_rating=${rating}`);
+    },
+
     getMonsterByIndex(index) {
         return fetchFromApi(`/monsters/${index}`);
     },
