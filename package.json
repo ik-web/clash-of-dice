@@ -1,9 +1,9 @@
 {
-    "name": "dnd-fighting",
+    "name": "clash-of-dice",
     "version": "0.0.0",
     "private": true,
     "type": "module",
-    "homepage": "https://ik-web.github.io/dnd-fighter/",
+    "homepage": "https://ik-web.github.io/clash-of-dice/",
     "scripts": {
         "start": "vite --open",
         "build": "vite build",
