@@ -6,18 +6,20 @@
 			</h3>
 
 			<div class="confirm-modal__btn-container">
-				<button
-					class="confirm-modal__btn confirm-modal__btn--cancel"
+				<v-button
+					class="confirm-modal__btn"
+					color="gray"
+					label="Cancel"
+					upper
 					@click="onCancel"
-				>
-					Cancel
-				</button>
-				<button
-					class="confirm-modal__btn confirm-modal__btn--confirm"
+				/>
+				<v-button
+					class="confirm-modal__btn"
+					color="red"
+					label="Confirm"
+					upper
 					@click="onConfirm"
-				>
-					Confirm
-				</button>
+				/>
 			</div>
 		</div>
 	</v-modal>

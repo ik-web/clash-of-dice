@@ -2,21 +2,15 @@ import { defineComponent, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCharacterStore } from '@/stores/character';
 import PageLayout from '../../components/layout/PageLayout.vue';
-import MyCharacter from './components/character/MyCharacter.vue';
-import CharacterForm from './components/form/CharacterForm.vue';
+import VCharacter from '@/components/character/VCharacter.vue';
 
 export default defineComponent({
-	components: {
-		PageLayout,
-		MyCharacter,
-		CharacterForm,
-	},
+    components: { PageLayout, VCharacter },
 
-	setup() {
-		const characterStore = useCharacterStore();
-		const { character } = storeToRefs(characterStore);
-		const editMode = ref(false);
+    setup() {
+        const characterStore = useCharacterStore();
+        const { characters } = storeToRefs(characterStore);
 
-		return { character, editMode };
-	},
+        return { characters };
+    },
 });

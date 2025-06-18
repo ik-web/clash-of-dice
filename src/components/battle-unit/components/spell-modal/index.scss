@@ -1,0 +1,75 @@
+@use '../../../../assets/scss/_vars.scss' as *;
+@use '../../../../assets/scss/_mixins.scss' as *;
+
+.action-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 450px;
+    width: 100%;
+    padding-bottom: 10px;
+
+    &__title {
+        font-family: $font_family_decor;
+        text-align: center;
+        font-weight: 600;
+        font-size: 24px;
+    }
+
+    &__subtitle {
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    &__roll {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        &-checkbox {
+            display: flex;
+            align-items: center;
+
+            input[disabled] + span {
+                opacity: 0.5;
+            }
+
+            span {
+                margin-left: 5px;
+                user-select: none;
+                line-height: 1;
+            }
+        }
+
+        & > div {
+            display: flex;
+            align-items: center;
+        }
+
+        div > span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 40px;
+            line-height: 1;
+            font-size: 20px;
+            background: #ddd;
+        }
+
+        button {
+            width: 80px;
+        }
+
+        &-crit {
+            font-weight: 600;
+            color: red;
+        }
+    }
+
+    &__btn-close {
+        width: 160px;
+        margin: 20px auto 0;
+    }
+}

@@ -13,12 +13,12 @@ export default defineComponent({
 				name: 'Characters',
 			},
 			{
-				path: '/battleground',
-				name: 'Battleground',
+				path: '/monsters',
+				name: 'Monsters',
 			},
 			{
-				path: '/settings',
-				name: 'Settings',
+				path: '/battleground',
+				name: 'Battleground',
 			},
 			{
 				path: '/score',

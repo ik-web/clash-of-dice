@@ -2,43 +2,19 @@
 @use '../../assets/scss/_mixins.scss' as *;
 
 .confirm-modal {
-	max-width: 480px;
-	width: 100%;
+    max-width: 440px;
+    width: 100%;
 
-	&__message {
-		margin-bottom: 30px;
-		font-size: 18px;
-		text-align: center;
-	}
+    &__message {
+        margin-bottom: 30px;
+        font-size: 18px;
+        text-align: center;
+    }
 
-	&__btn-container {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 15px;
-		width: 100%;
-	}
-
-	&__btn {
-		height: 40px;
-		padding: 4px 8px;
-		color: $color_white;
-		text-transform: uppercase;
-		border-radius: 4px;
-
-		&--edit {
-			background: teal;
-		}
-
-		&--cancel {
-			background: #888;
-		}
-
-		&--confirm {
-			background: red;
-		}
-
-		@include mobile {
-			height: 50px;
-		}
-	}
+    &__btn-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        width: 100%;
+    }
 }

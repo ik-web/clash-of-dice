@@ -2,7 +2,7 @@ import HomeView from '../views/home/HomeView.vue';
 import CharactersView from '@/views/characters/CharactersView.vue';
 import BattlegroundView from '@/views/battleground/BattlegroundView.vue';
 import ScoreView from '@/views/score/ScoreView.vue';
-import SettingsView from '@/views/settings/SettingsView.vue';
+import MonstersView from '@/views/monsters/MonstersView.vue';
 
 export const routes = [
 	{
@@ -16,6 +16,11 @@ export const routes = [
 		component: CharactersView,
 	},
 	{
+		path: '/monsters',
+		name: 'monsters',
+		component: MonstersView,
+	},
+	{
 		path: '/battleground',
 		name: 'battleground',
 		component: BattlegroundView,
@@ -24,10 +29,5 @@ export const routes = [
 		path: '/score',
 		name: 'score',
 		component: ScoreView,
-	},
-	{
-		path: '/settings',
-		name: 'settings',
-		component: SettingsView,
 	},
 ];

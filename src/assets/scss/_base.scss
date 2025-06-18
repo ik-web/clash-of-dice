@@ -1,44 +1,50 @@
 @use './vars' as *;
 
 body {
-	font-family: $font_family_main;
-	font-size: $font_size_main;
-	color: $color_main;
-	background: #eee;
+    font-family: $font_family_main;
+    font-size: $font_size_main;
+    color: $color_main;
+    background: #eee;
 }
 
 button {
-	border: none;
-	cursor: pointer;
+    border: none;
+    cursor: pointer;
 }
 
 a {
-	color: #555;
-	text-decoration: none;
-	transition: color $transition;
+    color: #555;
+    text-decoration: none;
+    transition: color $transition;
 
-	&:focus,
-	&:hover {
-		color: #333;
-	}
+    &:focus,
+    &:hover {
+        color: #222;
+    }
 }
 
 img {
-	display: block;
-	width: 100%;
+    display: block;
+    width: 100%;
 }
 
 input,
 select {
-	font-size: $font_size_main;
+    font-size: $font_size_main;
+
+    &:disabled {
+        color: #999;
+        background: #eee;
+        opacity: 1;
+    }
 }
 
 input,
 select,
 textarea,
 button {
-	&:focus {
-		border: none;
-		outline: none;
-	}
+    &:focus {
+        border: none;
+        outline: none;
+    }
 }

@@ -1,0 +1,17 @@
+@use '../../assets/scss/_vars.scss' as *;
+@use '../../assets/scss/_mixins.scss' as *;
+
+.characters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    & > div {
+        height: 100%;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

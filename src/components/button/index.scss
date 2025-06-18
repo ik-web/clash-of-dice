@@ -1,0 +1,47 @@
+@use '../../assets/scss/_vars.scss' as *;
+@use '../../assets/scss/_mixins.scss' as *;
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 4px 12px;
+    font-size: 14px;
+    border: none;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &--upper {
+        text-transform: uppercase;
+    }
+
+    &--default {
+        color: $color_main;
+        background: #ddd;
+    }
+
+    &--green {
+        color: $color_white;
+        background: teal;
+    }
+
+    &--gray {
+        color: $color_white;
+        background: #888;
+    }
+
+    &--red {
+        color: $color_white;
+        background: red;
+    }
+
+    &--blue {
+        color: $color_main;
+        background: lightblue;
+    }
+}

@@ -1,41 +1,57 @@
 @use '../../assets/scss/_vars.scss' as *;
+@use '../../assets/scss/_mixins.scss' as *;
 
 .battleground {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 20px;
-    height: inherit;
-
-    .creatures {
-        &__loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            font-family: $font_family_decor;
-            font-size: 36px;
-            font-weight: 600;
-        }
-
-        &__creature:not(:last-child) {
-            margin-bottom: 20px;
-        }
-    }
-
-    .creatures,
-    .battle {
-        padding: 20px;
-        background: $color_white;
-    }
-
-    .battle {
+    &__alert {
+        margin-top: 100px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: 15px;
+    }
 
-        &__logs {
-            flex-grow: 1;
+    &__title {
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__link {
+        &,
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 200px;
+            width: 100%;
+            height: 40px;
+            margin: 0 auto;
+            padding: 4px 8px;
+            color: $color_white;
+            text-transform: uppercase;
+            background: teal;
+
+            @include mobile {
+                height: 50px;
+            }
+        }
+    }
+
+    &__units {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+
+        @include tablet {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__unit {
+        border: 2px solid green;
+
+        &--disabled {
+            border-color: transparent;
         }
     }
 }

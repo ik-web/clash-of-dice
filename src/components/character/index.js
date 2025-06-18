@@ -1,7 +1,22 @@
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import CharacterCard from '../character-card/CharacterCard.vue';
+import CharacterForm from '../character-form/CharacterForm.vue';
 
 export default defineComponent({
+    components: {
+        CharacterCard,
+        CharacterForm,
+    },
+
+    props: {
+        character: {
+            type: Object,
+            required: true,
+        },
+    },
+
     setup() {
-        return {};
+        const editMode = ref(false);
+        return { editMode };
     },
 });

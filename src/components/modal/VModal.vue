@@ -1,5 +1,5 @@
 <template>
-	<transition name="modal">
+	<transition name="fade">
 		<div
 			v-show="open"
 			class="modal"

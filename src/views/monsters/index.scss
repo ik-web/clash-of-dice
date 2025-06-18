@@ -1,0 +1,138 @@
+@use '../../assets/scss/_vars.scss' as *;
+@use '../../assets/scss/_mixins.scss' as *;
+
+.monsters {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 50px;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__form,
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 400px;
+        width: 100%;
+        min-height: 500px;
+        padding: 15px;
+        background: $color_white;
+        box-shadow: 1px 2px 4px #ccc;
+    }
+
+    &__form {
+        &-fields {
+            display: flex;
+            flex-direction: column;
+
+            & > .monsters__btn {
+                margin-top: 30px;
+            }
+        }
+
+        &-field {
+            display: flex;
+            flex-direction: column;
+
+            span:nth-child(1) {
+                font-size: 14px;
+            }
+
+            &:not(:last-of-type) {
+                margin-bottom: 15px;
+            }
+        }
+
+        &-input {
+            height: 40px;
+            padding: 4px 8px;
+            background: #ddd;
+            border: none;
+        }
+
+        &-infinity-message {
+            flex-grow: 1;
+            margin-top: 15px;
+            padding: 15px;
+            background: #ddd;
+
+            span:first-child {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+
+        &-btn-container {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: end;
+            align-content: end;
+            gap: 15px;
+            width: 100%;
+            padding: 15px 0;
+
+            @include mobile {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    &__list {
+        ul {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            min-height: 60px;
+            padding: 5px;
+            line-height: 1.2;
+            background: #ddd;
+            box-shadow: 1px 2px 4px #aaa;
+
+            &-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            &-img {
+                display: block;
+                width: 50px;
+                height: 50px;
+            }
+
+            &-btn {
+                background: transparent;
+            }
+
+            &-svg {
+                display: block;
+                width: 25px;
+                fill: red;
+
+                @include tablet {
+                    width: 30px;
+                }
+            }
+        }
+    }
+}

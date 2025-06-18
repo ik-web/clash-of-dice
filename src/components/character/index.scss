@@ -1,24 +1,2 @@
 @use '../../assets/scss/_vars.scss' as *;
-
-.character {
-    &__name {
-        margin-bottom: 15px;
-        font-size: 24px;
-        font-weight: 600;
-    }
-
-    &__class {
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-
-    &__level {
-    }
-
-    &__initiative {
-    }
-
-    &__hp {
-    }
-}
+@use '../../assets/scss/_mixins.scss' as *;

@@ -1,46 +1,60 @@
-import { defineComponent, onMounted, ref, watchEffect } from 'vue';
-import { dndApiService } from '../../services/dnd-api';
+import { computed, defineComponent, onMounted, ref, watchEffect } from 'vue';
 import PageLayout from '../../components/layout/PageLayout.vue';
-import VCreature from '../../components/monster/VCreature.vue';
+import BattleUnit from '../../components/battle-unit/BattleUnit.vue';
+import { useMonsterStore } from '@/stores/monster';
+import { useCharacterStore } from '@/stores/character';
+import { storeToRefs } from 'pinia';
 
 export default defineComponent({
-	components: { PageLayout, VCreature },
+    components: { PageLayout, BattleUnit },
 
-	setup() {
-		const monsters = ref([]);
-		const loading = ref(false);
-		const creatures = ref([]);
-		const currentMonster = ref(null);
-		const currentMonsterIndex = ref(0);
+    setup() {
+        const monsterStore = useMonsterStore();
+        const characterStore = useCharacterStore();
+        const { selectedMonsters } = storeToRefs(monsterStore);
+        const { selectedCharacters } = storeToRefs(characterStore);
 
-		const getMonsters = async () => {
-			const response = await dndApiService.getMonsterListByRating(0.125);
-			monsters.value = response.results;
-		};
+        const units = ref([]);
+        const act = ref(0);
 
-		const getCurrentMonster = async () => {
-			loading.value = true;
-			const monsterIndex = monsters.value[currentMonsterIndex.value].index;
-			currentMonster.value = await dndApiService.getMonsterByIndex(monsterIndex);
-			creatures.value = [currentMonster.value];
-			loading.value = false;
-		};
+        const isPreparing = computed(() => units.value.some(u => !u.initiative));
 
-		watchEffect(() => {
-			if (monsters.value.length) {
-				getCurrentMonster();
-			}
-		});
+        const checkDisabled = unit => {
+            const unitIndex = units.value.findIndex(u => u.id === unit.id);
+            return unit.initiative && act.value !== unitIndex;
+        };
 
-		onMounted(() => {
-			getMonsters();
-		});
+        const onActed = () => {
+            if (isPreparing.value) return;
 
-		return {
-			loading,
-			creatures,
-			currentMonster,
-			currentMonsterIndex,
-		};
-	},
+            let nextAct = act.value + 1;
+
+            if (nextAct >= units.value.length) {
+                nextAct = 0;
+            }
+
+            act.value = nextAct;
+        };
+
+        const setUnits = () => {
+            units.value = [...selectedCharacters.value, ...selectedMonsters.value];
+        };
+
+        const sortUnitsByInitiative = () => {
+            if (isPreparing.value) return;
+            units.value = [...units.value].sort((a, b) => b.initiative - a.initiative);
+        };
+
+        watchEffect(setUnits);
+        watchEffect(sortUnitsByInitiative);
+
+        return {
+            units,
+            isPreparing,
+            selectedCharacters,
+            onActed,
+            checkDisabled,
+            selectedMonsters,
+        };
+    },
 });

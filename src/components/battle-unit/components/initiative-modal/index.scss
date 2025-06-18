@@ -1,0 +1,36 @@
+@use '../../../../assets/scss/_vars.scss' as *;
+@use '../../../../assets/scss/_mixins.scss' as *;
+
+.initiative-modal {
+    width: 200px;
+    padding: 5px 0 10px;
+
+    h2 {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: 80px 50px;
+        grid-template-rows: 40px;
+        justify-content: center;
+    }
+
+    input {
+        background: #ddd;
+        border: none;
+    }
+
+    input,
+    button {
+        text-align: center;
+        border-radius: none;
+    }
+
+    button {
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+}

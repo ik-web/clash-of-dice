@@ -11,12 +11,12 @@ export default defineComponent({
 				name: 'Characters',
 			},
 			{
-				href: '/battleground',
-				name: 'Battleground',
+				href: '/monsters',
+				name: 'Monsters',
 			},
 			{
-				href: '/settings',
-				name: 'Settings',
+				href: '/battleground',
+				name: 'Battleground',
 			},
 			{
 				href: '/score',

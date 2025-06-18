@@ -1,8 +1,9 @@
 import { defineComponent } from 'vue';
 import VModal from '@/components/modal/VModal.vue';
+import VButton from '@/components/button/VButton.vue';
 
 export default defineComponent({
-	components: { VModal },
+	components: { VModal, VButton },
 
 	props: {
 		open: {
