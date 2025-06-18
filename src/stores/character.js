@@ -27,9 +27,9 @@ export const useCharacterStore = defineStore('character', () => {
 	const setCharFromLocalStorage = () => {
 		const char = localStorage.getItem('character');
 
-		if (char) {
-			character.value = JSON.parse(char);
-		}
+		if (!char) return;
+
+		character.value = JSON.parse(char);
 	};
 
 	return {

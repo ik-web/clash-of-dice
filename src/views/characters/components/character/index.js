@@ -2,10 +2,10 @@ import { storeToRefs } from 'pinia';
 import { computed, defineComponent, ref } from 'vue';
 import { useCharacterStore } from '@/stores/character';
 import { leveling } from '@/utils/leveling';
-import VModal from '@/components/modal/VModal.vue';
+import ConfirmModal from '@/components/confirm-modal/ConfirmModal.vue';
 
 export default defineComponent({
-	components: { VModal },
+	components: { ConfirmModal },
 
 	props: {
 		editMode: {
@@ -34,10 +34,6 @@ export default defineComponent({
 			isConfirmModal.value = true;
 		};
 
-		const onCancelDelete = () => {
-			isConfirmModal.value = false;
-		};
-
 		const onConfirmDelete = () => {
 			resetCharacter();
 			isConfirmModal.value = false;
@@ -49,7 +45,6 @@ export default defineComponent({
 			isConfirmModal,
 			onCharEdit,
 			onCharDelete,
-			onCancelDelete,
 			onConfirmDelete,
 		};
 	},

@@ -32,3 +32,13 @@ input,
 select {
 	font-size: $font_size_main;
 }
+
+input,
+select,
+textarea,
+button {
+	&:focus {
+		border: none;
+		outline: none;
+	}
+}

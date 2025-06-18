@@ -29,6 +29,7 @@
 					<option
 						v-for="charClass in classes"
 						:value="charClass"
+						:key="charClass"
 					>
 						{{ charClass }}
 					</option>
@@ -45,6 +46,7 @@
 					<option
 						v-for="level in leveling.total"
 						:value="level"
+						:key="level"
 					>
 						{{ level }}
 					</option>
@@ -62,7 +64,7 @@
 			</label>
 
 			<label class="character-form__field">
-				<span>Hit points:</span>
+				<span>Hit points (HP):</span>
 				<input
 					class="character-form__input"
 					type="number"
@@ -72,7 +74,7 @@
 			</label>
 
 			<label class="character-form__field">
-				<span>Armor class:</span>
+				<span>Armor class (AC):</span>
 				<input
 					class="character-form__input"
 					type="number"

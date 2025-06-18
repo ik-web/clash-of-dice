@@ -24,12 +24,12 @@
 			</div>
 
 			<div class="character__stat">
-				<span>Hit points: </span>
+				<span>Hit points (HP): </span>
 				<span>{{ character.hp }}</span>
 			</div>
 
 			<div class="character__stat">
-				<span>Armor class: </span>
+				<span>Armor class (AC): </span>
 				<span>{{ character.ac }}</span>
 			</div>
 
@@ -49,28 +49,11 @@
 			</div>
 		</div>
 
-		<v-modal :open="isConfirmModal">
-			<div class="character__confirm-modal">
-				<h3 class="character__confirm-modal-title">
-					Are you sure you want to delete character?
-				</h3>
-
-				<div class="character__confirm-modal-btns">
-					<button
-						class="character__btn character__btn--cancel"
-						@click="onCancelDelete"
-					>
-						Cancel
-					</button>
-					<button
-						class="character__btn character__btn--delete"
-						@click="onConfirmDelete"
-					>
-						Confirm
-					</button>
-				</div>
-			</div>
-		</v-modal>
+		<confirm-modal
+			v-model:open="isConfirmModal"
+			message="Are you sure you want to delete character?"
+			@confirm="onConfirmDelete"
+		/>
 	</div>
 </template>
 

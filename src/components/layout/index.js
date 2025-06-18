@@ -17,12 +17,12 @@ export default defineComponent({
 				name: 'Battleground',
 			},
 			{
-				path: '/score',
-				name: 'Score',
-			},
-			{
 				path: '/settings',
 				name: 'Settings',
+			},
+			{
+				path: '/score',
+				name: 'Score',
 			},
 		];
 

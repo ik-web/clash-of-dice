@@ -81,34 +81,12 @@
 			background: teal;
 		}
 
-		&--cancel {
-			background: #888;
-		}
-
 		&--delete {
 			background: red;
 		}
 
 		@include mobile {
 			height: 50px;
-		}
-	}
-
-	&__confirm-modal {
-		max-width: 480px;
-		width: 100%;
-
-		&-title {
-			margin-bottom: 30px;
-			font-size: 18px;
-			text-align: center;
-		}
-
-		&-btns {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			gap: 15px;
-			width: 100%;
 		}
 	}
 }
