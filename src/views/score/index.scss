@@ -1,4 +1,42 @@
 @use '../../assets/scss/_vars.scss' as *;
 
 .score-page {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5rem;
+        font-family: sans-serif;
+    }
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tr.character-row td {
+        background-color: #e8f0fe;
+        font-weight: bold;
+        font-size: 1.05em;
+        padding: 10px;
+    }
+
+    tr.monster-header th {
+        background-color: #f9f9f9;
+        font-style: italic;
+    }
+
+    tr.monster-row:nth-child(even) {
+        background-color: #fdfdfd;
+    }
+
+    tr.monster-row:nth-child(odd) {
+        background-color: #f7f7f7;
+    }
 }

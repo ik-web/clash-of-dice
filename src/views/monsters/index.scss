@@ -5,11 +5,14 @@
     display: flex;
     justify-content: center;
     align-items: start;
-    gap: 50px;
+    gap: 30px;
+
+    @include tablet {
+        gap: 15px;
+    }
 
     @include mobile {
         flex-direction: column;
-        gap: 30px;
     }
 
     &__title {
@@ -29,6 +32,10 @@
         padding: 15px;
         background: $color_white;
         box-shadow: 1px 2px 4px #ccc;
+
+        @include mobile {
+            min-height: 430px;
+        }
     }
 
     &__form {

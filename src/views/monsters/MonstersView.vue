@@ -2,7 +2,9 @@
     <page-layout>
         <div class="monsters">
             <div class="monsters__form">
-                <h2 class="monsters__title">Add monsters</h2>
+                <h2 class="monsters__title">
+                    {{ formTitle }}
+                </h2>
 
                 <div class="monsters__form-fields">
                     <label class="monsters__form-field">

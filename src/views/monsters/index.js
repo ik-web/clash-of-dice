@@ -1,4 +1,4 @@
-import { defineComponent, ref, watchEffect } from 'vue';
+import { computed, defineComponent, ref, watchEffect } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useMonsterStore } from '@/stores/monster';
 import { useSettingsStore } from '@/stores/settings';
@@ -21,6 +21,10 @@ export default defineComponent({
             monsterStore;
         const loading = ref(false);
         const isConfirmModal = ref(false);
+
+        const formTitle = computed(() => {
+            return settings.value.mode === 'infinity' ? 'Infinity battle' : 'Add monsters';
+        });
 
         const onAddMonster = async () => {
             loading.value = true;
@@ -59,8 +63,9 @@ export default defineComponent({
         return {
             loading,
             settings,
-            challenges,
             monsters,
+            formTitle,
+            challenges,
             selectedMonsters,
             isConfirmModal,
             formatCR,

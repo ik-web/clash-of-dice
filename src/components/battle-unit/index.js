@@ -2,6 +2,7 @@ import { computed, defineComponent, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { rollDice } from '@/utils/roll-dice';
 import { leveling } from '@/utils/leveling';
+import { useScoreStore } from '@/stores/score';
 import { useMonsterStore } from '@/stores/monster';
 import { useCharacterStore } from '@/stores/character';
 import VButton from '@/components/button/VButton.vue';
@@ -35,9 +36,11 @@ export default defineComponent({
     emits: ['acted'],
 
     setup(props, { emit }) {
+        const scoreStore = useScoreStore();
         const monsterStore = useMonsterStore();
         const characterStore = useCharacterStore();
         const { selectedCharacters } = storeToRefs(characterStore);
+        const { setScore } = scoreStore;
         const { updateMonster, deleteMonster } = monsterStore;
         const { updateCharacter, toggleCharacter } = characterStore;
 
@@ -79,6 +82,12 @@ export default defineComponent({
             });
         };
 
+        const saveScore = () => {
+            selectedCharacters.value.forEach(char => {
+                setScore(char, props.unit);
+            });
+        };
+
         const removeUnit = () => {
             if (props.unit.class) {
                 toggleCharacter(props.unit.id);
@@ -112,6 +121,7 @@ export default defineComponent({
             }
 
             if (props.unit.currentHp <= 0) {
+                saveScore();
                 removeUnit();
             }
 
