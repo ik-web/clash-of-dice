@@ -4,10 +4,10 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { useScoreStore } from './stores/score';
-import { useMonsterStore } from './stores/monster';
-import { useSettingsStore } from './stores/settings';
-import { useCharacterStore } from './stores/character';
+import { useScoreStore } from './modules/scoring/store';
+import { useMonsterStore } from './modules/monsters/store';
+import { useSettingsStore } from './modules/settings/store';
+import { useCharacterStore } from './modules/characters/store';
 
 const { setScoreFromLocalStorage } = useScoreStore();
 const { setCharsFromLocalStorage } = useCharacterStore();

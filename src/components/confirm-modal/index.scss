@@ -1,14 +1,23 @@
-@use '../../assets/scss/_vars.scss' as *;
-@use '../../assets/scss/_mixins.scss' as *;
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
 
 .confirm-modal {
-    max-width: 440px;
-    width: 100%;
+    @include modal(500px);
+    padding: 40px;
+    color: $color_main;
+
+    @include mobile {
+        padding: 30px 20px;
+    }
 
     &__message {
         margin-bottom: 30px;
-        font-size: 18px;
+        font-size: 20px;
         text-align: center;
+
+        @include mobile {
+            font-size: 18px;
+        }
     }
 
     &__btn-container {

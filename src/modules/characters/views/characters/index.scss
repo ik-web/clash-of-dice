@@ -1,0 +1,24 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.characters {
+    @include page('@/assets/img/barbarian.png', bottom right / contain);
+
+    &__container {
+        display: flex;
+        align-content: start;
+        flex-wrap: wrap;
+        gap: 15px;
+        max-width: 1300px;
+        margin: 0 auto;
+
+        @media (max-width: 2540px) {
+            margin: 0;
+        }
+
+        @include laptop {
+            margin: 0 auto;
+            justify-content: center;
+        }
+    }
+}

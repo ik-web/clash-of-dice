@@ -1,5 +1,5 @@
-@use '../../assets/scss/_vars.scss' as *;
-@use '../../assets/scss/_mixins.scss' as *;
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
 
 .modal {
     position: fixed;
@@ -9,18 +9,11 @@
     bottom: 0;
     z-index: 1000;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.5);
-
-    &__inner {
-        max-width: max-content;
-        width: max-content;
-        padding: 20px;
-        background: white;
-        box-shadow: 2px 3px 5px #333;
-    }
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .fade-enter-active,

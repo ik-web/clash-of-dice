@@ -1,5 +1,5 @@
-@use '../../assets/scss/_vars.scss' as *;
-@use '../../assets/scss/_mixins.scss' as *;
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
 
 .page-layout {
     display: flex;
@@ -113,18 +113,17 @@
     &__sub-nav {
         display: flex;
         align-items: center;
-        justify-content: end;
         gap: 30px;
         height: 40px;
         padding: 15px;
-        background: #555;
+        background: #333;
 
         a {
             color: #aaa;
         }
 
         .router-link-active.router-link-exact-active {
-            color: #eee;
+            color: white;
         }
     }
 

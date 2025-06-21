@@ -1,0 +1,28 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.initiative-modal {
+    @include modal(400px);
+    padding: 50px 15px;
+
+    &__title {
+        margin-bottom: 30px;
+        font-size: 20px;
+        text-align: center;
+
+        @include mobile {
+            font-size: 18px;
+        }
+    }
+
+    &__form {
+        display: grid;
+        grid-template-columns: 80px 50px;
+        grid-template-rows: 40px;
+        justify-content: center;
+
+        &-input {
+            text-align: center;
+        }
+    }
+}

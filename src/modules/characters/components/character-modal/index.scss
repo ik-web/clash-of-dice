@@ -1,0 +1,63 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.character-modal {
+    max-width: 420px;
+    width: 100%;
+    padding: 30px;
+    color: $color_main;
+    background: white;
+    box-shadow: $box_shadow_main;
+
+    @include mobile {
+        padding: 30px 15px;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+
+        @include mobile {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+
+        span:nth-child(1) {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__input {
+        height: 40px;
+        padding: 4px 8px;
+        background: #ddd;
+        border: none;
+    }
+
+    &__btn-container {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+
+        button {
+            width: 100%;
+        }
+    }
+}

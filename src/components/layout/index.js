@@ -1,6 +1,6 @@
 import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import logoHref from '../../assets/img/d20.png';
+import logoHref from '@/assets/img/d20.png';
 
 export default defineComponent({
     props: {
@@ -21,23 +21,31 @@ export default defineComponent({
                 name: 'Battleground',
             },
             {
+                path: '/characters',
+                name: 'Characters',
+            },
+            {
+                path: '/monsters',
+                name: 'Monsters',
+            },
+            {
                 path: '/scoring',
                 name: 'Scoring',
             },
-            {
-                path: '/settings',
-                name: 'Settings',
-            },
+            // {
+            //     path: '/settings',
+            //     name: 'Settings',
+            // },
         ];
 
         const route = useRoute();
         const isNavigation = ref(false);
 
         const checkParentRoute = childrenRoutePath => {
-            console.log(childrenRoutePath.split('/')[1]);
-            console.log(route.path.split('/')[1]);
+            const parentRoutePart = route.path.split('/')[1];
+            const childRoutePart = childrenRoutePath.split('/')[1];
 
-            return route.path.split('/')[1] === childrenRoutePath.split('/')[1];
+            return parentRoutePart === childRoutePart;
         };
 
         const toggleNav = () => {

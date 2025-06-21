@@ -1,14 +1,12 @@
 <template>
-	<transition name="fade">
-		<div
-			v-show="open"
-			class="modal"
-		>
-			<div class="modal__inner">
-				<slot></slot>
-			</div>
-		</div>
-	</transition>
+    <transition name="fade">
+        <div
+            v-show="open"
+            class="modal"
+        >
+            <slot></slot>
+        </div>
+    </transition>
 </template>
 
 <script src="./index.js"></script>
