@@ -36,6 +36,13 @@ export const useMonsterStore = defineStore('monster', () => {
         saveMonsters();
     };
 
+    const selectRandomMonster = async () => {
+        const randomIndex = Math.floor(Math.random() * monsters.value.length);
+        const randomMonsterIndex = monsters.value[randomIndex].index;
+
+        await selectMonster(randomMonsterIndex);
+    };
+
     const updateMonster = (monsterId, data = {}) => {
         const monster = selectedMonsters.value.find(m => m.id === monsterId);
 
@@ -78,6 +85,7 @@ export const useMonsterStore = defineStore('monster', () => {
         selectMonster,
         updateMonster,
         deleteMonster,
+        selectRandomMonster,
         resetSelectedMonsters,
         removeSelectedMonsters,
         setMonstersFromLocalStorage,

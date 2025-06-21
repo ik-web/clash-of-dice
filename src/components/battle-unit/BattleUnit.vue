@@ -26,7 +26,7 @@
                             </div>
                         </template>
                         <template v-else>
-                            <span>CR: {{ unit.cr }}</span>
+                            <span>CR: {{ formatCR(unit.cr) }}</span>
                         </template>
                     </div>
                 </div>

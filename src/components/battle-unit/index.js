@@ -1,7 +1,8 @@
 import { computed, defineComponent, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { rollDice } from '@/utils/roll-dice';
 import { leveling } from '@/utils/leveling';
+import { formatCR } from '@/utils/format-cr';
+import { rollDice } from '@/utils/roll-dice';
 import { useScoreStore } from '@/stores/score';
 import { useMonsterStore } from '@/stores/monster';
 import { useCharacterStore } from '@/stores/character';
@@ -178,6 +179,7 @@ export default defineComponent({
             isActionModal,
             isInitiativeModal,
             setHP,
+            formatCR,
             openSpellModal,
             closeSpellModal,
             openActionModal,

@@ -5,16 +5,16 @@ const defaultSettings = {
     cr: 0,
     monsterIndex: '',
     mode: 'selected',
-    difficulty: 'easy',
+    difficulty: 1,
     modes: [
         { label: 'Selected monsters', value: 'selected' },
         { label: 'Random monsters', value: 'random' },
         { label: 'Infinity battle', value: 'infinity' },
     ],
     difficulties: [
-        { label: 'Easy', value: 'easy' },
-        { label: 'Normal', value: 'normal' },
-        { label: 'Hard', value: 'hard' },
+        { label: 'Easy', value: 1 },
+        { label: 'Normal', value: 2 },
+        { label: 'Hard', value: 3 },
     ],
 };
 

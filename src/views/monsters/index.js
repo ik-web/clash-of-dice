@@ -17,8 +17,15 @@ export default defineComponent({
         const { settings } = storeToRefs(settingsStore);
         const { monsters, selectedMonsters } = storeToRefs(monsterStore);
         const { saveSettings, resetSettings } = settingsStore;
-        const { fetchMonsters, selectMonster, resetSelectedMonsters, removeSelectedMonsters } =
-            monsterStore;
+
+        const {
+            fetchMonsters,
+            selectMonster,
+            selectRandomMonster,
+            resetSelectedMonsters,
+            removeSelectedMonsters,
+        } = monsterStore;
+
         const loading = ref(false);
         const isConfirmModal = ref(false);
 
@@ -39,10 +46,7 @@ export default defineComponent({
             }
 
             if (settings.value.mode === 'random') {
-                const randomIndex = Math.floor(Math.random() * monsters.value.length);
-                const randomMonsterIndex = monsters.value[randomIndex].index;
-
-                await selectMonster(randomMonsterIndex);
+                selectRandomMonster();
             }
 
             loading.value = false;

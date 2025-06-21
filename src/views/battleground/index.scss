@@ -13,32 +13,32 @@
         gap: 15px;
         background: rgba(255, 255, 255, 0.9);
         box-shadow: $box_shadow_main;
-    }
 
-    &__title {
-        margin-bottom: 30px;
-        font-size: 24px;
-        font-weight: 600;
-        text-align: center;
-    }
+        &-title {
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
 
-    &__link {
-        &,
-        a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 200px;
-            width: 100%;
-            height: 40px;
-            margin: 0 auto;
-            padding: 4px 8px;
-            color: white;
-            text-transform: uppercase;
-            background: teal;
+        &-link {
+            &,
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                max-width: 200px;
+                width: 100%;
+                height: 40px;
+                margin: 0 auto;
+                padding: 4px 8px;
+                color: white;
+                text-transform: uppercase;
+                background: teal;
 
-            @include mobile {
-                height: 50px;
+                @include mobile {
+                    height: 50px;
+                }
             }
         }
     }
@@ -46,8 +46,11 @@
     &__units {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         gap: 15px;
+
+        @include laptop {
+            justify-content: center;
+        }
     }
 
     &__unit {

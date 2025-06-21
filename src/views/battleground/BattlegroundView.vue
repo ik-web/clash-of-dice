@@ -5,19 +5,19 @@
                 v-if="!units.length"
                 class="battleground__alert"
             >
-                <h2 class="battleground__title">
+                <h2 class="battleground__alert-title">
                     {{ 'You have to choose at least one character or monster!' }}
                 </h2>
 
                 <router-link
-                    class="battleground__link"
+                    class="battleground__alert-link"
                     to="/characters"
                 >
                     Characters
                 </router-link>
 
                 <router-link
-                    class="battleground__link"
+                    class="battleground__alert-link"
                     to="/monsters"
                 >
                     Monsters
@@ -26,20 +26,18 @@
 
             <template v-else>
                 <div class="battleground__units">
-                    <template v-if="units.length">
-                        <battle-unit
-                            :class="[
-                                'battleground__unit',
-                                { 'battleground__unit--disabled': checkDisabled(unit) },
-                            ]"
-                            v-for="(unit, key) in units"
-                            :key="key"
-                            :unit="unit"
-                            :preparing="isPreparing"
-                            :disabled="checkDisabled(unit)"
-                            @acted="onActed"
-                        />
-                    </template>
+                    <battle-unit
+                        :class="[
+                            'battleground__unit',
+                            { 'battleground__unit--disabled': checkDisabled(unit) },
+                        ]"
+                        v-for="(unit, key) in units"
+                        :key="key"
+                        :unit="unit"
+                        :preparing="isPreparing"
+                        :disabled="checkDisabled(unit)"
+                        @acted="onActed"
+                    />
                 </div>
 
                 <div class="battleground__logs"></div>
