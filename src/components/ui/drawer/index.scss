@@ -1,0 +1,46 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    &__container {
+        position: relative;
+        margin-top: $height_header;
+        width: 50%;
+        height: 100%;
+        padding: 30px;
+        background: white;
+        box-shadow: -1px 0 2px #555;
+
+        @include tablet_large {
+            width: 100%;
+        }
+
+        @include mobile {
+            padding: 20px;
+        }
+    }
+
+    &__btn-close {
+        @include btn_close;
+    }
+}
+
+.drawer-enter-active,
+.drawer-leave-active {
+    transition: transform 0.3s ease;
+}
+
+.drawer-enter-from,
+.drawer-leave-to {
+    transform: translateX(100%);
+}

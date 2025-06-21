@@ -6,12 +6,18 @@ $font_family_decor: Allerta, sans-serif;
 $font_size_main: 16px;
 
 // Colors ================================
-$color_main: #2b2b2b;
+$color_main: #333;
+
+$color_red: red;
+$color_green: teal;
 
 // Shadows ===============================
 
-$box_shadow_main: 2px 3px 5px #555;
-$box_shadow_small: 1px 2px 3px gray;
+$box_shadow_main: 2px 4px 6px black;
+$box_shadow_small: 1px 2px 4px #333;
 
 // Transition ============================
 $transition: 0.15s linear;
+
+// Layout ================================
+$height_header: 60px;

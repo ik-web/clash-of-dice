@@ -1,55 +1,45 @@
-import { defineComponent, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import logoHref from '../../assets/img/d20.png';
+import { computed, defineComponent, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import logoHref from '@/assets/img/d20.png';
 
 export default defineComponent({
-    props: {
-        subNavigation: {
-            type: Array,
-            default: () => [],
-        },
-    },
-
     setup() {
-        const pages = [
-            {
-                path: '/',
-                name: 'Home',
-            },
-            {
-                path: '/battleground',
-                name: 'Battleground',
-            },
-            {
-                path: '/scoring',
-                name: 'Scoring',
-            },
-            {
-                path: '/settings',
-                name: 'Settings',
-            },
-        ];
-
         const route = useRoute();
-        const isNavigation = ref(false);
+        const router = useRouter();
+        const isMenu = ref(false);
 
-        const checkParentRoute = childrenRoutePath => {
-            console.log(childrenRoutePath.split('/')[1]);
-            console.log(route.path.split('/')[1]);
+        const navigation = computed(() => {
+            const routes = router.getRoutes();
 
-            return route.path.split('/')[1] === childrenRoutePath.split('/')[1];
+            return routes
+                .filter(route => route.meta.navLabel)
+                .map(route => ({
+                    path: route.path,
+                    name: route.name,
+                    label: route.meta.navLabel,
+                    title: route.meta.navLabel,
+                }));
+        });
+
+        const currentPage = computed(() => route.name || null);
+        const subNavigation = computed(() => route.meta.subNavigation || null);
+
+        const checkActiveLink = linkName => {
+            return currentPage.value.startsWith(linkName.split('-')[0]);
         };
 
-        const toggleNav = () => {
-            isNavigation.value = !isNavigation.value;
+        const toggleMenu = () => {
+            isMenu.value = !isMenu.value;
         };
 
         return {
-            pages,
+            isMenu,
             logoHref,
-            isNavigation,
-            toggleNav,
-            checkParentRoute,
+            navigation,
+            currentPage,
+            subNavigation,
+            toggleMenu,
+            checkActiveLink,
         };
     },
 });

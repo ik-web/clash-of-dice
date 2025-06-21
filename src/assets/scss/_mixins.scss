@@ -1,20 +1,92 @@
-@mixin page($img, $img_settings) {
-    height: 100%;
-    padding: 15px;
-    background: gray url($img) $img_settings no-repeat;
-    overflow: auto;
+@use 'sass:color';
+@use '@/assets/scss/_vars.scss' as *;
 
+@mixin items_grid() {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+
+    @media (max-width: 2800px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (max-width: 2200px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 1800px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include tablet_large {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet {
+        grid-template-columns: 1fr;
+    }
+}
+
+@mixin scroll_bar($color) {
     &::-webkit-scrollbar {
         width: 5px;
     }
     &::-webkit-scrollbar-track {
-        background: gray;
+        background: $color;
     }
     &::-webkit-scrollbar-thumb {
-        background: #333;
+        background: color.adjust($color, $lightness: -30%);
     }
     &::-webkit-scrollbar-thumb:hover {
-        background: #555;
+        background: color.adjust($color, $lightness: -40%);
+    }
+}
+
+@mixin word_break {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+@mixin btn_close($size: 30px, $thickness: 2px, $color: #888) {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    width: $size;
+    height: $size;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform $transition;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: $size * 0.6;
+        height: $thickness;
+        background-color: $color;
+        transform-origin: center;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+        transform: rotate(180deg) scale(1.2);
+    }
+
+    &:focus {
+        outline: none;
     }
 }
 
@@ -30,7 +102,7 @@
     }
 }
 
-@mixin laptop {
+@mixin tablet_large {
     @media (max-width: 1024px) {
         @content;
     }

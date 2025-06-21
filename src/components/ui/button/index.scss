@@ -1,0 +1,73 @@
+@use 'sass:color';
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 4px 12px;
+    font-size: 14px;
+    border: none;
+    transition: all $transition;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &--bold {
+        font-weight: 600;
+    }
+
+    &--upper {
+        text-transform: uppercase;
+    }
+
+    &--default {
+        color: $color_main;
+        background: #ddd;
+
+        &:hover:not(:disabled) {
+            background: #ccc;
+        }
+    }
+
+    &--green {
+        color: white;
+        background: teal;
+
+        &:hover:not(:disabled) {
+            background: color.adjust(teal, $lightness: -5%);
+        }
+    }
+
+    &--gray {
+        color: white;
+        background: gray;
+
+        &:hover:not(:disabled) {
+            background: color.adjust(gray, $lightness: -5%);
+        }
+    }
+
+    &--red {
+        color: white;
+        background: red;
+
+        &:hover:not(:disabled) {
+            background: color.adjust(red, $lightness: -15%);
+        }
+    }
+
+    &--blue {
+        color: $color_main;
+        background: lightblue;
+
+        &:hover:not(:disabled) {
+            background: color.adjust(lightblue, $lightness: -10%);
+        }
+    }
+}

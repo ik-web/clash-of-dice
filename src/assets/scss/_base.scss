@@ -4,22 +4,18 @@ body {
     font-family: $font_family_main;
     font-size: $font_size_main;
     color: $color_main;
-}
-
-button {
-    font-family: $font_family_main;
-    border: none;
-    cursor: pointer;
+    background: #555;
 }
 
 a {
-    color: #555;
+    color: teal;
     text-decoration: none;
+    font-family: $font_family_main;
     transition: color $transition;
 
     &:focus,
     &:hover {
-        color: #222;
+        color: teal;
     }
 }
 
@@ -28,23 +24,41 @@ img {
     width: 100%;
 }
 
-input,
-select {
-    &:disabled {
-        color: #999;
-        background: #eee;
-        opacity: 1;
+input {
+    height: 40px;
+    background: #ccc;
+
+    &[type='number'] {
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        // Firefox-specific hack to hide number input arrows
+        // This is safe to use
+        -moz-appearance: textfield;
     }
 }
 
-input,
-select,
-textarea,
 button {
+    cursor: pointer;
+}
+
+input,
+button {
+    padding: 4px 8px;
     font-family: $font_family_main;
     font-size: $font_size_main;
+    color: $color_main;
+    border: none;
 
-    &:focus {
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    &:focus:not(:disabled) {
         border: none;
         outline: none;
     }

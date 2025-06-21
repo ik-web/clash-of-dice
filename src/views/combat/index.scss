@@ -1,0 +1,150 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.encounter {
+    @include page_decoration('@/assets/img/dwarf.png', bottom right / contain);
+
+    &__alert {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 30px 15px;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: $box_shadow_main;
+
+        @include mobile {
+            height: 100%;
+            justify-content: space-evenly;
+        }
+
+        &-title {
+            margin-bottom: 30px;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        &-link {
+            display: flex;
+            justify-content: center;
+            height: 40px;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            align-items: center;
+            background: teal;
+            color: white;
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+
+            a {
+                padding: 4px 8px;
+                text-transform: uppercase;
+
+                @include mobile {
+                    height: 50px;
+                }
+            }
+        }
+    }
+
+    &__container {
+        @include units_container;
+    }
+
+    &__unit {
+        &-actions {
+            display: grid;
+            grid-template-rows: repeat(3, 40px);
+            gap: 10px;
+        }
+
+        &-hp {
+            display: grid;
+            grid-template-columns: 40px 60px 40px;
+
+            &-input {
+                background: #ddd;
+                border: none;
+            }
+
+            &-input,
+            &-btn {
+                height: 40px;
+                text-align: center;
+                border-radius: none;
+            }
+
+            &-btn {
+                font-weight: 600;
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+        }
+
+        &-activity {
+            display: flex;
+            justify-content: space-between;
+
+            &-btn {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                user-select: none;
+            }
+        }
+
+        &-initiative {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+            min-height: 25px;
+
+            &-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+                line-height: 1;
+                background: #ddd;
+                border: 2px solid gray;
+                user-select: none;
+            }
+
+            &-form {
+                display: flex;
+
+                input {
+                    width: 100%;
+                    padding: 5px 15px;
+                    text-align: center;
+                }
+
+                button {
+                    width: 40px;
+                }
+            }
+        }
+
+        &-battle-actions {
+            flex-grow: 1;
+            display: flex;
+            align-content: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+
+            &--disabled {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import PageLayout from '../../components/layout/PageLayout.vue';
+import PageLayout from '@/components/layout/PageLayout.vue';
 
 export default defineComponent({
     components: { PageLayout },
@@ -7,29 +7,27 @@ export default defineComponent({
     setup() {
         const options = [
             {
-                href: '/battleground',
-                name: 'Battleground',
+                key: 1,
+                href: '/encounters',
+                label: 'Encaunters',
             },
             {
-                href: '/settings/characters',
-                name: 'Characters',
+                key: 2,
+                href: '/parties',
+                label: 'Parties',
             },
             {
-                href: '/settings/monsters',
-                name: 'Monsters',
+                key: 3,
+                href: '/bestiary',
+                label: 'Bestiary',
             },
             {
-                href: '/scoring',
-                name: 'Scoring',
-            },
-            {
-                href: '/settings',
-                name: 'Settings',
+                key: 4,
+                href: '/score',
+                label: 'Score',
             },
         ];
 
-        return {
-            options,
-        };
+        return { options };
     },
 });

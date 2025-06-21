@@ -1,15 +1,26 @@
-import { defineComponent } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useSettingsStore } from '@/stores/settings';
-import PageLayout from '../../components/layout/PageLayout.vue';
+import { defineComponent, ref } from 'vue';
+import { useEncounterStore } from '@/store/encounter';
+import VButton from '@/components/ui/button/VButton.vue';
+import PageLayout from '@/components/layout/PageLayout.vue';
+import ConfirmModal from '@/components/shared/confirm-modal/ConfirmModal.vue';
 
 export default defineComponent({
-    components: { PageLayout },
+    components: { PageLayout, VButton, ConfirmModal },
 
     setup() {
-        const settingsStore = useSettingsStore();
-        const { subPages } = settingsStore;
+        const encounterStore = useEncounterStore();
+        const { clearEncounterState } = encounterStore;
 
-        return { subPages };
+        const isConfirmModal = ref(false);
+
+        const onClearBrowserData = () => {
+            isConfirmModal.value = true;
+        };
+
+        return {
+            isConfirmModal,
+            onClearBrowserData,
+            clearEncounterState,
+        };
     },
 });

@@ -1,0 +1,16 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.confirm-modal {
+    &__message {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    &__btn-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,90 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.encounters {
+    &__list {
+        @include items_grid;
+
+        .encounter {
+            padding: 15px;
+            background: white;
+            box-shadow: $box_shadow_small;
+
+            &__name {
+                margin-bottom: 15px;
+                text-transform: uppercase;
+            }
+
+            &__info {
+                display: grid;
+                grid-template-columns: 1fr auto auto;
+                align-items: center;
+                gap: 15px;
+
+                @include mobile {
+                    grid-template-columns: 1fr auto;
+                }
+            }
+
+            &__status {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 80px;
+                padding: 5px 8px;
+                line-height: 1;
+                border: 1px solid green;
+
+                &--ready {
+                    color: green;
+                }
+
+                &--process {
+                    color: #347fe0;
+                }
+
+                &--completed {
+                    color: red;
+                }
+            }
+
+            &__play {
+                display: inline-flex;
+                min-width: 80px;
+                height: 30px;
+
+                @include mobile {
+                    grid-column: 2;
+                }
+            }
+        }
+    }
+
+    .encounter1 {
+        display: flex;
+        align-items: center;
+        gap: 15px 30px;
+        padding: 20px;
+
+        @include mobile {
+            flex-direction: column;
+        }
+
+        &__name {
+            flex-grow: 1;
+        }
+
+        &-content {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            justify-content: center;
+            gap: 30px;
+        }
+
+        &-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 100px);
+            gap: 15px;
+        }
+    }
+}

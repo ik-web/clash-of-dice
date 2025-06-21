@@ -1,4 +1,5 @@
 export const classes = [
+	'Artificer',
 	'Barbarian',
 	'Bard',
 	'Cleric',

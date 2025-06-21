@@ -2,43 +2,45 @@
     <div class="page-layout">
         <header class="page-layout__header">
             <router-link
-                class="page-layout__logo"
+                class="page-layout__header-logo"
                 :to="'/'"
             >
                 <img
-                    class="page-layout__logo-img"
+                    class="page-layout__header-logo-img"
                     alt="Logo"
                     :src="logoHref"
                 />
-                <span class="page-layout__logo-text">Clash of Dice</span>
+                <span class="page-layout__header-logo-text">
+                    {{ 'Clash of Dice' }}
+                </span>
             </router-link>
 
             <nav
-                class="page-layout__nav"
-                :class="{ 'page-layout__nav--active': isNavigation }"
+                class="page-layout__header-menu"
+                :class="{ 'page-layout__header-menu--active': isMenu }"
             >
                 <router-link
-                    :class="{ 'page-layout__nav-link-active': checkParentRoute(page.path) }"
-                    v-for="page in pages"
-                    :key="page.path"
-                    :to="page.path"
-                    :title="page.name"
+                    :class="{ 'is-active': checkActiveLink(link.name) }"
+                    v-for="link in navigation"
+                    :key="link.path"
+                    :to="link.path"
+                    :title="link.label"
                 >
-                    {{ page.name }}
+                    {{ link.label }}
                 </router-link>
             </nav>
 
             <button
-                class="page-layout__nav-btn"
-                @click="toggleNav"
+                class="page-layout__header-menu-btn"
+                @click="toggleMenu"
             >
                 Menu
             </button>
         </header>
 
         <nav
-            v-if="subNavigation.length"
-            class="page-layout__sub-nav"
+            v-if="subNavigation"
+            class="page-layout__navigation"
         >
             <router-link
                 v-for="link in subNavigation"
@@ -50,8 +52,13 @@
             </router-link>
         </nav>
 
-        <main class="page-layout__main">
-            <slot></slot>
+        <main
+            class="page-layout__main"
+            :class="`page-layout__main--${currentPage}`"
+        >
+            <div class="page-layout__overlay">
+                <slot></slot>
+            </div>
         </main>
     </div>
 </template>

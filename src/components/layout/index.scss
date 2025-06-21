@@ -1,136 +1,183 @@
-@use '../../assets/scss/_vars.scss' as *;
-@use '../../assets/scss/_mixins.scss' as *;
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+$page-padding: 15px;
 
 .page-layout {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden;
 
     &__header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 5px 15px;
+        height: $height_header;
+        padding: 0 $page-padding;
         background: black;
         border-bottom: 2px solid red;
-    }
 
-    &__logo {
-        display: flex;
-        align-items: center;
-        column-gap: 2px;
+        &-logo {
+            display: flex;
+            align-items: center;
+            column-gap: 2px;
 
-        &-img {
-            display: block;
-            width: 50px;
-            height: 50px;
+            &-img {
+                display: block;
+                width: 50px;
+                height: 50px;
+
+                @include mobile {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+            &-text {
+                font-family: $font_family_decor;
+                font-size: 32px;
+                font-weight: 600;
+                line-height: 1;
+                color: white;
+
+                @include tablet_large {
+                    font-size: 28px;
+                }
+
+                @include mobile {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        &-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            a {
+                text-transform: uppercase;
+                color: white;
+
+                @include tablet_large {
+                    font-size: 20px;
+                }
+            }
+
+            @include tablet_large {
+                position: fixed;
+                top: 62px;
+                left: -100%;
+                bottom: 0;
+                z-index: 100;
+                flex-direction: column;
+                gap: 40px;
+                width: 100%;
+                padding: 40px 0;
+                background: #333;
+                transition: left $transition;
+            }
 
             @include mobile {
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        &-text {
-            font-family: $font_family_decor;
-            font-size: 32px;
-            font-weight: 600;
-            line-height: 1;
-            color: white;
-
-            @include tablet {
-                font-size: 28px;
+                top: 52px;
             }
 
-            @include mobile {
-                font-size: 24px;
+            a.is-active,
+            .page-layout__nav-link-active,
+            .router-link-active.router-link-exact-active {
+                color: cyan;
+                text-decoration: underline;
+                text-underline-offset: 4px;
+            }
+
+            &--active {
+                @include tablet_large {
+                    display: flex;
+                    left: 0;
+                }
+            }
+
+            &-btn {
+                display: none;
+                height: 32px;
+                padding: 4px 12px;
+                text-transform: uppercase;
+                background: transparent;
+                border: 1px solid white;
+                color: white;
+
+                &:focus {
+                    border: 1px solid white;
+                }
+
+                @include tablet_large {
+                    display: block;
+                }
             }
         }
     }
 
-    &__nav {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-
-        a {
-            text-transform: uppercase;
-            color: white;
-
-            @include tablet {
-                font-size: 20px;
-            }
-        }
-
-        @include tablet {
-            position: fixed;
-            top: 62px;
-            left: -100%;
-            bottom: 0;
-            z-index: 100;
-            flex-direction: column;
-            gap: 40px;
-            width: 100%;
-            padding: 40px 0;
-            background: #333;
-            transition: left $transition;
-        }
-
-        @include mobile {
-            top: 52px;
-        }
-
-        &--active {
-            @include tablet {
-                display: flex;
-                left: 0;
-            }
-        }
-
-        .page-layout__nav-link-active,
-        .router-link-active.router-link-exact-active {
-            color: cyan;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-    }
-
-    &__nav-btn {
-        display: none;
-        height: 32px;
-        padding: 4px 12px;
-        text-transform: uppercase;
-        background: transparent;
-        border: 1px solid white;
-        color: white;
-
-        @include tablet {
-            display: block;
-        }
-    }
-
-    &__sub-nav {
+    &__navigation {
         display: flex;
         align-items: center;
         justify-content: end;
         gap: 30px;
         height: 40px;
-        padding: 15px;
-        background: #555;
+        padding: 0 $page-padding;
+        background: #333;
 
         a {
             color: #aaa;
         }
 
         .router-link-active.router-link-exact-active {
-            color: #eee;
+            color: white;
+        }
+
+        @include mobile {
+            justify-content: center;
         }
     }
 
     &__main {
         flex-grow: 1;
-        height: 100%;
         overflow: hidden;
+
+        &--home {
+            background: url('@/assets/img/lich.png') center / contain no-repeat;
+        }
+
+        &--encounters {
+            background: url('@/assets/img/dwarf.png') center right / contain no-repeat;
+        }
+
+        &--encounters-builder {
+            background: url('@/assets/img/dwarf.png') center right / contain no-repeat;
+        }
+
+        &--parties {
+            background: url('@/assets/img/characters.png') center / contain no-repeat;
+        }
+
+        &--bestiary {
+            background: url('@/assets/img/beast.png') center / contain no-repeat;
+        }
+
+        &--settings {
+            background: url('@/assets/img/gnome.webp') center right / contain no-repeat;
+        }
+
+        &--score {
+            background: url('@/assets/img/book.webp') center right / contain no-repeat;
+        }
+    }
+
+    &__overlay {
+        @include scroll_bar(gray);
+        height: 100%;
+        min-height: 100%;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.6);
+        overflow: auto;
     }
 }

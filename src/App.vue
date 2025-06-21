@@ -4,20 +4,11 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { useScoreStore } from './stores/score';
-import { useMonsterStore } from './stores/monster';
-import { useSettingsStore } from './stores/settings';
-import { useCharacterStore } from './stores/character';
+import { useEncounterStore } from './store/encounter';
 
-const { setScoreFromLocalStorage } = useScoreStore();
-const { setCharsFromLocalStorage } = useCharacterStore();
-const { setMonstersFromLocalStorage } = useMonsterStore();
-const { setSettingsFromLocalStorage } = useSettingsStore();
+const { loadEncounterState } = useEncounterStore();
 
 onMounted(() => {
-    setCharsFromLocalStorage();
-    setScoreFromLocalStorage();
-    setMonstersFromLocalStorage();
-    setSettingsFromLocalStorage();
+    loadEncounterState();
 });
 </script>

@@ -1,20 +1,17 @@
 <template>
     <page-layout>
         <div class="home">
-            <ul class="options">
-                <li
-                    class="option"
+            <div class="home__options">
+                <router-link
+                    class="home__option"
                     v-for="option in options"
-                    :key="option.href"
+                    :title="option.name"
+                    :key="option.key"
+                    :to="option.href"
                 >
-                    <router-link
-                        :to="option.href"
-                        :title="option.name"
-                    >
-                        {{ option.name }}
-                    </router-link>
-                </li>
-            </ul>
+                    {{ option.label }}
+                </router-link>
+            </div>
         </div>
     </page-layout>
 </template>

@@ -1,0 +1,142 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.char-builder {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 15px;
+    height: 100%;
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 35px;
+
+        @include tablet {
+            grid-template-columns: 1fr;
+        }
+
+        @include tablet {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__col {
+        display: grid;
+        gap: 15px;
+
+        grid-template-rows: auto 1fr;
+
+        &:nth-child(2) {
+            .char-builder__title {
+                margin-bottom: 20px;
+
+                @include tablet {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__form {
+        &-btn {
+            width: 150px;
+            margin: 0 auto;
+
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+
+    &__form,
+    &__characters {
+        @include scroll_bar(#ccc);
+        height: 0;
+        min-height: 100%;
+        overflow: auto;
+    }
+
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 35px;
+
+        @include mobile {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+
+        span:nth-child(1) {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    &__double-field {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 15px;
+
+        label input {
+            width: 100%;
+        }
+    }
+
+    &__char {
+        display: flex;
+        align-items: center;
+        align-items: center;
+        gap: 10px;
+        height: 40px;
+        padding-left: 8px;
+        background: #eee;
+
+        span {
+            line-height: 40px;
+
+            &:nth-child(1) {
+                flex-grow: 1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                flex-shrink: 0;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+
+        &-btn {
+            font-size: 25px;
+        }
+    }
+
+    &__btn-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        width: 100%;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}

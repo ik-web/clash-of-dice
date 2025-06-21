@@ -1,39 +1,68 @@
-import HomeView from '../views/home/HomeView.vue';
+import { subNavigation } from './sub-navigation';
+import HomeView from '@/views/home/HomeView.vue';
 import ScoreView from '@/views/score/ScoreView.vue';
-import MonstersView from '@/views/monsters/MonstersView.vue';
+import PartiesView from '@/views/parties/PartiesView.vue';
+import BestiaryView from '@/views/bestiary/BestiaryView.vue';
 import SettingsView from '@/views/settings/SettingsView.vue';
-import CharactersView from '@/views/characters/CharactersView.vue';
-import BattlegroundView from '@/views/battleground/BattlegroundView.vue';
+import EncountersView from '@/views/encounters/EncountersView.vue';
+import EncounterBuilderView from '@/views/encounter-builder/EncounterBuilderView.vue';
 
 export const routes = [
     {
         path: '/',
         name: 'home',
         component: HomeView,
+        meta: {
+            navLabel: 'Home',
+        },
     },
     {
-        path: '/battleground',
-        name: 'battleground',
-        component: BattlegroundView,
+        path: '/encounters',
+        name: 'encounters',
+        component: EncountersView,
+        meta: {
+            navLabel: 'Encounters',
+            subNavigation: subNavigation.encounters,
+        },
     },
     {
-        path: '/scoring',
-        name: 'scoring',
-        component: ScoreView,
+        path: '/encounters/builder',
+        name: 'encounters-builder',
+        component: EncounterBuilderView,
+        meta: {
+            subNavigation: subNavigation.encounters,
+        },
     },
+    // {
+    //     path: '/parties',
+    //     name: 'parties',
+    //     component: PartiesView,
+    //     meta: {
+    //         navLabel: 'Parties',
+    //     },
+    // },
+    // {
+    //     path: '/bestiary',
+    //     name: 'bestiary',
+    //     component: BestiaryView,
+    //     meta: {
+    //         navLabel: 'Bestiary',
+    //     },
+    // },
+    // {
+    //     path: '/score',
+    //     name: 'score',
+    //     component: ScoreView,
+    //     meta: {
+    //         navLabel: 'Score',
+    //     },
+    // },
     {
         path: '/settings',
         name: 'settings',
         component: SettingsView,
-    },
-    {
-        path: '/settings/characters',
-        name: 'settings-characters',
-        component: CharactersView,
-    },
-    {
-        path: '/settings/monsters',
-        name: 'settings-monsters',
-        component: MonstersView,
+        meta: {
+            navLabel: 'Settings',
+        },
     },
 ];

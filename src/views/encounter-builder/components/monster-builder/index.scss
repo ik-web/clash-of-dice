@@ -1,0 +1,108 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.monster-builder {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 15px;
+    height: 100%;
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 35px;
+
+        @include tablet {
+            grid-template-columns: 1fr;
+        }
+
+        @include tablet {
+            margin-bottom: 15px;
+        }
+
+        &-left,
+        &-right {
+            display: grid;
+            gap: 15px;
+        }
+
+        &-left {
+            grid-template-rows: repeat(3, auto) 1fr;
+        }
+
+        &-right {
+            grid-template-rows: auto 1fr;
+
+            .monster-builder__title {
+                margin-bottom: 20px;
+
+                @include mobile {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+
+        span:nth-child(1) {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    &__monsters,
+    &__selected-monsters {
+        @include scroll_bar(#ccc);
+        height: 0;
+        min-height: 100%;
+        overflow: auto;
+    }
+
+    &__monster {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        height: 40px;
+        padding-left: 8px;
+        background: #eee;
+
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+
+        &-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 40px);
+
+            input {
+                text-align: center;
+            }
+        }
+
+        &-btn {
+            font-size: 25px;
+        }
+    }
+
+    &__btn-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        width: 100%;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
