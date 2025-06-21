@@ -1,5 +1,5 @@
 <template>
-    <page-layout>
+    <page-layout :subNavigation="subPages">
         <div class="monsters">
             <div class="monsters__form">
                 <h2 class="monsters__form-title">

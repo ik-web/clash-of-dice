@@ -4,46 +4,44 @@
 .score {
     @include page('../../assets/img/sceleton.png', center / contain);
 
-    &__table {
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1.5rem;
-            font-family: sans-serif;
-            box-shadow: $box_shadow_main;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5rem;
+        font-family: sans-serif;
+        box-shadow: $box_shadow_main;
+    }
 
-        th,
-        td {
-            padding: 8px 12px;
-            text-align: left;
-            border: 1px solid #444;
-        }
+    th,
+    td {
+        padding: 8px 12px;
+        text-align: left;
+        border: 1px solid #444;
+    }
 
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
 
-        tr.character-row td {
-            padding: 10px;
-            font-weight: bold;
-            font-size: 1.05em;
-            color: white;
-            background-color: #444;
-        }
+    tr.character-row td {
+        padding: 10px;
+        font-weight: bold;
+        font-size: 1.05em;
+        color: white;
+        background-color: #444;
+    }
 
-        tr.monster-header th {
-            font-style: italic;
-            background-color: #bbb;
-        }
+    tr.monster-header th {
+        font-style: italic;
+        background-color: #bbb;
+    }
 
-        tr.monster-row:nth-child(even) {
-            background-color: #eee;
-        }
+    tr.monster-row:nth-child(even) {
+        background-color: #eee;
+    }
 
-        tr.monster-row:nth-child(odd) {
-            background-color: #fff;
-        }
+    tr.monster-row:nth-child(odd) {
+        background-color: #fff;
     }
 }

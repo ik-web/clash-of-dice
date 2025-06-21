@@ -1,6 +1,17 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
+const subPages = [
+    {
+        path: '/settings/characters',
+        label: 'Characters',
+    },
+    {
+        path: '/settings/monsters',
+        label: 'Monsters',
+    },
+];
+
 const defaultSettings = {
     cr: 0,
     monsterIndex: '',
@@ -40,6 +51,7 @@ export const useSettingsStore = defineStore('settings', () => {
 
     return {
         settings,
+        subPages,
         saveSettings,
         resetSettings,
         setSettingsFromLocalStorage,

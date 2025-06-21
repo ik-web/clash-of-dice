@@ -1,0 +1,6 @@
+@use '../../assets/scss/_vars.scss' as *;
+@use '../../assets/scss/_mixins.scss' as *;
+
+.settings {
+    @include page('../../assets/img/gnome.webp', center right / contain);
+}

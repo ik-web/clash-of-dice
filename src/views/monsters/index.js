@@ -16,7 +16,7 @@ export default defineComponent({
         const settingsStore = useSettingsStore();
         const { settings } = storeToRefs(settingsStore);
         const { monsters, selectedMonsters } = storeToRefs(monsterStore);
-        const { saveSettings, resetSettings } = settingsStore;
+        const { subPages, saveSettings, resetSettings } = settingsStore;
 
         const {
             fetchMonsters,
@@ -73,6 +73,7 @@ export default defineComponent({
             loading,
             settings,
             monsters,
+            subPages,
             formTitle,
             challenges,
             isConfirmModal,

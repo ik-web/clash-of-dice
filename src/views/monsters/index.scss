@@ -2,7 +2,7 @@
 @use '../../assets/scss/_mixins.scss' as *;
 
 .monsters {
-    @include page('../../assets/img/lich.avif', right / contain);
+    @include page('../../assets/img/kobold.png', right / contain);
 
     display: flex;
     align-items: start;

@@ -1,5 +1,5 @@
 <template>
-    <page-layout>
+    <page-layout :subNavigation="subPages">
         <div class="characters">
             <v-character
                 v-for="character in characters"
