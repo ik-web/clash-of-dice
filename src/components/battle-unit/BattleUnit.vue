@@ -76,16 +76,15 @@
                     v-if="!unit.class"
                     class="battle-unit__about-initiative-shape"
                 >
-                    {{ unit.initiative }}
+                    <span>{{ unit.initiative }}</span>
                 </span>
 
                 <v-button
                     v-else
                     class="battle-unit__about-initiative-shape"
-                    upper
                     @click="openInitiativeModal"
                 >
-                    <span v-if="!unit.initiative">Set</span>
+                    <span v-if="!unit.initiative">➕</span>
                     <span v-else>{{ unit.initiative }}</span>
                 </v-button>
 

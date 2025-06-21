@@ -4,10 +4,10 @@ body {
     font-family: $font_family_main;
     font-size: $font_size_main;
     color: $color_main;
-    background: #eee;
 }
 
 button {
+    font-family: $font_family_main;
     border: none;
     cursor: pointer;
 }
@@ -30,8 +30,6 @@ img {
 
 input,
 select {
-    font-size: $font_size_main;
-
     &:disabled {
         color: #999;
         background: #eee;
@@ -43,6 +41,9 @@ input,
 select,
 textarea,
 button {
+    font-family: $font_family_main;
+    font-size: $font_size_main;
+
     &:focus {
         border: none;
         outline: none;

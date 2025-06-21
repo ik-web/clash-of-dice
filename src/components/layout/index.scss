@@ -2,6 +2,8 @@
 @use '../../assets/scss/_mixins.scss' as *;
 
 .page-layout {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     overflow: hidden;
 
@@ -10,7 +12,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 5px 15px;
-        background: #ccc;
+        background: black;
+        border-bottom: 2px solid red;
     }
 
     &__logo {
@@ -34,6 +37,7 @@
             font-size: 32px;
             font-weight: 600;
             line-height: 1;
+            color: white;
 
             @include tablet {
                 font-size: 28px;
@@ -52,28 +56,29 @@
 
         a {
             text-transform: uppercase;
+            color: white;
 
             @include tablet {
-                font-size: 22px;
+                font-size: 20px;
             }
         }
 
         @include tablet {
             position: fixed;
-            top: 50px;
+            top: 62px;
             left: -100%;
             bottom: 0;
             z-index: 100;
             flex-direction: column;
-            gap: 30px;
+            gap: 40px;
             width: 100%;
-            padding: 30px 0;
-            background: #888;
+            padding: 40px 0;
+            background: #333;
             transition: left $transition;
+        }
 
-            a {
-                color: $color_white;
-            }
+        @include mobile {
+            top: 52px;
         }
 
         &--active {
@@ -84,13 +89,9 @@
         }
 
         .router-link-active.router-link-exact-active {
-            color: teal;
+            color: cyan;
             text-decoration: underline;
             text-underline-offset: 4px;
-
-            @include tablet {
-                color: cyan;
-            }
         }
     }
 
@@ -99,7 +100,9 @@
         height: 32px;
         padding: 4px 12px;
         text-transform: uppercase;
-        border-radius: 4px;
+        background: transparent;
+        border: 1px solid white;
+        color: white;
 
         @include tablet {
             display: block;
@@ -107,23 +110,8 @@
     }
 
     &__main {
-        height: calc(100vh - 90px);
-        margin-top: 15px;
-        padding: 0 15px 15px;
-        overflow: auto;
-
-        &::-webkit-scrollbar {
-            width: 6px;
-        }
-        &::-webkit-scrollbar-track {
-            background: #fff;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: #bbb;
-            border-radius: 4px;
-        }
-        &::-webkit-scrollbar-thumb:hover {
-            background: #aaa;
-        }
+        flex-grow: 1;
+        height: 100%;
+        overflow: hidden;
     }
 }

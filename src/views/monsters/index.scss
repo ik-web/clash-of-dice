@@ -2,43 +2,39 @@
 @use '../../assets/scss/_mixins.scss' as *;
 
 .monsters {
+    @include page('../../assets/img/lich.avif', right / contain);
+
     display: flex;
-    justify-content: center;
     align-items: start;
-    gap: 30px;
+    gap: 15px;
+
+    @include laptop {
+        justify-content: center;
+    }
 
     @include tablet {
-        gap: 15px;
-    }
-
-    @include mobile {
+        align-items: center;
+        justify-content: start;
         flex-direction: column;
-    }
-
-    &__title {
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-    }
-
-    &__form,
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        max-width: 400px;
-        width: 100%;
-        min-height: 500px;
-        padding: 15px;
-        background: $color_white;
-        box-shadow: 1px 2px 4px #ccc;
-
-        @include mobile {
-            min-height: 430px;
-        }
     }
 
     &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 400px;
+        min-height: 560px;
+        padding: 15px;
+        background: white;
+        box-shadow: $box_shadow_main;
+
+        &-title {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
         &-fields {
             display: flex;
             flex-direction: column;
@@ -54,6 +50,7 @@
 
             span:nth-child(1) {
                 font-size: 14px;
+                line-height: 1.4;
             }
 
             &:not(:last-of-type) {
@@ -97,47 +94,59 @@
     }
 
     &__list {
-        ul {
-            margin-top: 15px;
-            display: flex;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        width: 100%;
+        max-width: 400px;
+
+        @include tablet {
             flex-direction: column;
-            gap: 10px;
+            align-items: center;
         }
 
         &-item {
+            flex-shrink: 0;
             display: flex;
-            align-items: center;
             justify-content: space-between;
             gap: 10px;
-            min-height: 60px;
-            padding: 5px;
+            max-width: 400px;
+            width: 100%;
+            min-height: 100px;
+            padding: 15px;
             line-height: 1.2;
             background: #ddd;
-            box-shadow: 1px 2px 4px #aaa;
-
-            &-content {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
+            box-shadow: $box_shadow_main;
 
             &-img {
                 display: block;
-                width: 50px;
-                height: 50px;
+                width: 70px;
+                height: 70px;
+            }
+
+            &-desc {
+                flex-grow: 1;
+            }
+
+            &-name {
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            &-stats {
+                span {
+                    display: inline-block;
+                    margin-right: 20px;
+                }
             }
 
             &-btn {
                 background: transparent;
-            }
 
-            &-svg {
-                display: block;
-                width: 25px;
-                fill: red;
-
-                @include tablet {
-                    width: 30px;
+                svg {
+                    display: block;
+                    width: 35px;
+                    fill: red;
                 }
             }
         }

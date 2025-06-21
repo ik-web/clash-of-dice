@@ -32,7 +32,7 @@ export const useMonsterStore = defineStore('monster', () => {
             spells: response.special_abilities[0]?.spellcasting?.spells || [],
         };
 
-        selectedMonsters.value = [monster, ...selectedMonsters.value];
+        selectedMonsters.value = [...selectedMonsters.value, monster];
         saveMonsters();
     };
 

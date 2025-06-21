@@ -2,16 +2,14 @@
 @use '../../assets/scss/_mixins.scss' as *;
 
 .characters {
+    @include page('../../assets/img/barbarian.png', bottom right / contain);
+
     display: flex;
+    align-content: start;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 15px;
 
-    & > div {
-        height: 100%;
-    }
-
-    @include mobile {
-        flex-direction: column;
-        gap: 15px;
+    @include laptop {
+        justify-content: center;
     }
 }

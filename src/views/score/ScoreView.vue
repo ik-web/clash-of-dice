@@ -1,6 +1,6 @@
 <template>
-    <page-layout class="score-page">
-        <div>
+    <page-layout>
+        <div class="score">
             <table>
                 <tbody>
                     <template

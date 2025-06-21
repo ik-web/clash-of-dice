@@ -2,7 +2,7 @@
     <page-layout>
         <div class="monsters">
             <div class="monsters__form">
-                <h2 class="monsters__title">
+                <h2 class="monsters__form-title">
                     {{ formTitle }}
                 </h2>
 
@@ -102,8 +102,8 @@
                 >
                     <v-button
                         color="green"
-                        :disabled="loading"
                         upper
+                        :disabled="addMonsterDisabled"
                         @click="onAddMonster"
                     >
                         Add monster
@@ -119,34 +119,35 @@
                 </div>
             </div>
 
-            <div
-                v-if="settings.mode !== 'infinity'"
-                class="monsters__list"
-            >
-                <h2 class="monsters__title">
-                    {{ 'Selected monsters' }}
-                </h2>
-
-                <ul>
+            <template v-if="settings.mode !== 'infinity'">
+                <ul class="monsters__list">
                     <li
                         class="monsters__list-item"
                         v-for="monster in selectedMonsters"
                         :key="monster.name"
                     >
-                        <span class="monsters__list-item-content">
-                            <img
-                                class="monsters__list-item-img"
-                                alt="Monster image"
-                                :src="`https://www.dnd5eapi.co${monster.image}`"
-                            />
-                            <span>{{ monster.name }} (CR:{{ formatCR(monster.cr) }})</span>
-                        </span>
+                        <img
+                            class="monsters__list-item-img"
+                            alt="Monster image"
+                            :src="`https://www.dnd5eapi.co${monster.image}`"
+                        />
+
+                        <div class="monsters__list-item-desc">
+                            <div class="monsters__list-item-name">
+                                {{ monster.name }}
+                            </div>
+
+                            <div class="monsters__list-item-stats">
+                                <span>CR: {{ formatCR(monster.cr) }}</span>
+                                <span>HP: {{ monster.hp }}</span>
+                            </div>
+                        </div>
+
                         <button
                             class="monsters__list-item-btn"
                             @click="onRemoveMonster(monster.id)"
                         >
                             <svg
-                                class="monsters__list-item-svg"
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 -960 960 960"
                             >
@@ -157,7 +158,7 @@
                         </button>
                     </li>
                 </ul>
-            </div>
+            </template>
         </div>
 
         <confirm-modal

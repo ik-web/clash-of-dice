@@ -10,6 +10,7 @@
     padding: 4px 12px;
     font-size: 14px;
     border: none;
+    transition: all $transition;
 
     &:disabled {
         opacity: 0.5;
@@ -26,17 +27,17 @@
     }
 
     &--green {
-        color: $color_white;
+        color: white;
         background: teal;
     }
 
     &--gray {
-        color: $color_white;
-        background: #888;
+        color: white;
+        background: gray;
     }
 
     &--red {
-        color: $color_white;
+        color: white;
         background: red;
     }
 

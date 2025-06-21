@@ -7,7 +7,11 @@ $font_size_main: 16px;
 
 // Colors ================================
 $color_main: #2b2b2b;
-$color_white: #ffffff;
+
+// Shadows ===============================
+
+$box_shadow_main: 2px 3px 5px #555;
+$box_shadow_small: 1px 2px 3px gray;
 
 // Transition ============================
 $transition: 0.15s linear;

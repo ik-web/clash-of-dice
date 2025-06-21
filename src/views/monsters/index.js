@@ -26,6 +26,11 @@ export default defineComponent({
             return settings.value.mode === 'infinity' ? 'Infinity battle' : 'Add monsters';
         });
 
+        const addMonsterDisabled = computed(() => {
+            const isDisabled = settings.value.mode === 'selected' && !settings.value.monsterIndex;
+            return loading && isDisabled;
+        });
+
         const onAddMonster = async () => {
             loading.value = true;
 
@@ -66,8 +71,9 @@ export default defineComponent({
             monsters,
             formTitle,
             challenges,
-            selectedMonsters,
             isConfirmModal,
+            selectedMonsters,
+            addMonsterDisabled,
             formatCR,
             onAddMonster,
             onConfirmReset,

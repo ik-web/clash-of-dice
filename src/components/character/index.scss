@@ -1,2 +1,8 @@
 @use '../../assets/scss/_vars.scss' as *;
 @use '../../assets/scss/_mixins.scss' as *;
+
+.character {
+    width: 100%;
+    max-width: 300px;
+    min-height: 580px;
+}

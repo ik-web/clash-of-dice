@@ -1,6 +1,6 @@
 import { defineComponent, ref } from 'vue';
-import CharacterCard from '../character-card/CharacterCard.vue';
-import CharacterForm from '../character-form/CharacterForm.vue';
+import CharacterCard from './components/character-card/CharacterCard.vue';
+import CharacterForm from './components/character-form/CharacterForm.vue';
 
 export default defineComponent({
     components: {
