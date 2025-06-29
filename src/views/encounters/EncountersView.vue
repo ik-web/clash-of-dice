@@ -30,6 +30,7 @@
                             label="Play"
                             title="Play"
                             :disabled="encounter.status.value === 'completed'"
+                            @click="playCombat(encounter.id)"
                         />
                     </div>
 

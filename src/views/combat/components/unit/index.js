@@ -42,7 +42,7 @@ export default defineComponent({
 
         const unitExp = computed(() => {
             const expToLvl = props.unit.lvl ? leveling[props.unit.lvl] : 0;
-            return `${props.unit.exp}/${expToLvl}`;
+            return `${props.unit.xp}/${expToLvl}`;
         });
 
         const unitHpCssClass = computed(() => {

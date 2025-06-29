@@ -10,6 +10,10 @@ export const useEncounterStore = defineStore('encounter', () => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({ encounters: encounters.value }));
     };
 
+    const getEncounter = id => {
+        return encounters.value.find(e => e.id === id) || null;
+    };
+
     const createEncounter = data => {
         const newEncounter = {
             id: crypto.randomUUID(),
@@ -21,6 +25,10 @@ export const useEncounterStore = defineStore('encounter', () => {
         encounters.value = [...encounters.value, newEncounter];
         saveEncounterState();
     };
+
+    const updateEncounter = (id, data) => {};
+
+    const deleteEncounter = id => {};
 
     const loadEncounterState = () => {
         const encountersInStorage = localStorage.getItem(STORAGE_KEY);
@@ -38,7 +46,12 @@ export const useEncounterStore = defineStore('encounter', () => {
 
     return {
         encounters,
+
+        getEncounter,
         createEncounter,
+        updateEncounter,
+        deleteEncounter,
+
         saveEncounterState,
         loadEncounterState,
         clearEncounterState,

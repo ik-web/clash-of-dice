@@ -1,6 +1,7 @@
 import { subNavigation } from './sub-navigation';
 import HomeView from '@/views/home/HomeView.vue';
 import ScoreView from '@/views/score/ScoreView.vue';
+import CombatView from '@/views/combat/CombatView.vue';
 import PartiesView from '@/views/parties/PartiesView.vue';
 import BestiaryView from '@/views/bestiary/BestiaryView.vue';
 import SettingsView from '@/views/settings/SettingsView.vue';
@@ -32,6 +33,11 @@ export const routes = [
         meta: {
             subNavigation: subNavigation.encounters,
         },
+    },
+    {
+        path: '/encounters/combat/:id',
+        name: 'encounters-combat',
+        component: CombatView,
     },
     // {
     //     path: '/parties',
