@@ -21,10 +21,12 @@ export default defineComponent({
 
     setup(_props, { emit }) {
         const loading = ref(false);
-        const monsterCR = ref('0');
+        const monsterCR = ref('all');
         const searchQuery = ref('');
         const monstersData = ref([]);
         const selectedMonsters = ref([]);
+
+        const challengeOptions = [{ label: 'All', value: 'all' }, ...challenges];
 
         const monstersList = computed(() =>
             monstersData.value.filter(m =>
@@ -32,12 +34,18 @@ export default defineComponent({
             ),
         );
 
-        const fetchMonstersByCR = async () => {
+        const fetchMonsters = async () => {
             try {
                 loading.value = true;
+                let data;
 
-                const { results } = await dndApiService.getMonsterListByRating(monsterCR.value);
-                monstersData.value = results.map(m => ({ ...m, count: 0 }));
+                if (monsterCR.value === 'all') {
+                    data = await dndApiService.getMonsterList();
+                } else {
+                    data = await dndApiService.getMonsterListByRating(monsterCR.value);
+                }
+
+                monstersData.value = data.results.map(m => ({ ...m, count: 0 }));
             } catch (error) {
                 throw error;
             } finally {
@@ -111,14 +119,14 @@ export default defineComponent({
             }
         };
 
-        watchEffect(() => fetchMonstersByCR());
+        watchEffect(() => fetchMonsters());
 
         return {
             loading,
             monsterCR,
-            challenges,
             searchQuery,
             monstersList,
+            challengeOptions,
             selectedMonsters,
             formatCR,
             addMonster,

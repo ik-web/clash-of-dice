@@ -14,7 +14,7 @@
                         <span>Challenge rating (CR):</span>
                         <v-select
                             v-model="monsterCR"
-                            :options="challenges"
+                            :options="challengeOptions"
                         />
                     </label>
 
