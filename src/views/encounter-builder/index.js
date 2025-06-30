@@ -9,93 +9,91 @@ import EncounterUnit from './components/encounter-unit/EncounterUnit.vue';
 import MonsterBuilder from '@/views/encounter-builder/components/monster-builder/MonsterBuilder.vue';
 
 export default defineComponent({
-    components: {
-        VButton,
-        PageLayout,
-        CharBuilder,
-        EncounterUnit,
-        MonsterBuilder,
-    },
+	components: {
+		VButton,
+		PageLayout,
+		CharBuilder,
+		EncounterUnit,
+		MonsterBuilder,
+	},
 
-    setup() {
-        const router = useRouter();
-        const encounterStore = useEncounterStore();
-        const { createEncounter } = encounterStore;
+	setup() {
+		const router = useRouter();
+		const encounterStore = useEncounterStore();
+		const { createEncounter } = encounterStore;
 
-        const isCharBuilder = ref(false);
-        const isPartyBuilder = ref(false);
-        const isMonsterBuilder = ref(false);
+		const isCharBuilder = ref(false);
+		const isPartyBuilder = ref(false);
+		const isMonsterBuilder = ref(false);
 
-        const units = ref([]);
-        const charForEdit = ref({});
-        const encounterName = ref('');
+		const units = ref([]);
+		const charForEdit = ref({});
+		const encounterName = ref('');
 
-        const openCharBuilder = () => {
-            isCharBuilder.value = true;
-        };
+		const openCharBuilder = () => {
+			isCharBuilder.value = true;
+		};
 
-        const openMonsterBuilder = () => {
-            isMonsterBuilder.value = true;
-        };
+		const openMonsterBuilder = () => {
+			isMonsterBuilder.value = true;
+		};
 
-        const openPartyBuilder = () => {
-            isPartyBuilder.value = true;
-        };
+		const openPartyBuilder = () => {
+			isPartyBuilder.value = true;
+		};
 
-        const onAddChars = chars => {
-            units.value.push(...chars);
-        };
+		const onAddChars = (chars) => {
+			units.value.push(...chars);
+		};
 
-        const onAddMonsters = monsters => {
-            units.value.push(...monsters);
-        };
+		const onAddMonsters = (monsters) => {
+			units.value.push(...monsters);
+		};
 
-        const onEditUnit = unit => {
-            console.log(unit);
-        };
+		const onEditUnit = (unit) => {};
 
-        const onRefreshUnit = unit => {
-            const dataForUpdate = {
-                initiative: null,
-                currentHP: unit.hp,
-            };
+		const onRefreshUnit = (unit) => {
+			const dataForUpdate = {
+				initiative: null,
+				currentHP: unit.hp,
+			};
 
-            units.value = updateUnit(unit.id, dataForUpdate, units.value);
-        };
+			units.value = updateUnit(unit.id, dataForUpdate, units.value);
+		};
 
-        const onDeleteUnit = id => {
-            units.value = deleteUnit(id, units.value);
-        };
+		const onDeleteUnit = (id) => {
+			units.value = deleteUnit(id, units.value);
+		};
 
-        const saveEncounter = () => {
-            const newEncounter = {
-                name: encounterName.value,
-                units: units.value,
-            };
+		const saveEncounter = () => {
+			const newEncounter = {
+				name: encounterName.value,
+				units: units.value,
+			};
 
-            createEncounter(newEncounter);
-            router.push('/encounters');
-        };
+			createEncounter(newEncounter);
+			router.push('/encounters');
+		};
 
-        return {
-            units,
-            isCharBuilder,
-            charForEdit,
-            isMonsterBuilder,
+		return {
+			units,
+			isCharBuilder,
+			charForEdit,
+			isMonsterBuilder,
 
-            encounterName,
-            saveEncounter,
+			encounterName,
+			saveEncounter,
 
-            openCharBuilder,
-            openPartyBuilder,
-            openMonsterBuilder,
+			openCharBuilder,
+			openPartyBuilder,
+			openMonsterBuilder,
 
-            onAddChars,
-            onAddMonsters,
+			onAddChars,
+			onAddMonsters,
 
-            onEditUnit,
-            onDeleteUnit,
-            onRefreshUnit,
-        };
-    },
+			onEditUnit,
+			onDeleteUnit,
+			onRefreshUnit,
+		};
+	},
 });

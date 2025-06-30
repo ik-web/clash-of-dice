@@ -87,8 +87,6 @@ export default defineComponent({
         };
 
         const addMonsters = async () => {
-            console.log(selectedMonsters.value);
-
             try {
                 loading.value = true;
                 const monsters = [];

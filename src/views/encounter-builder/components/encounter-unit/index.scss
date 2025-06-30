@@ -2,99 +2,92 @@
 @use '@/assets/scss/_mixins.scss' as *;
 
 .unit {
-    position: relative;
-    display: flex;
-    gap: 15px;
-    padding: 15px;
-    background: white;
-    box-shadow: $box_shadow_small;
+	position: relative;
+	display: flex;
+	gap: 15px;
+	padding: 15px;
+	background: white;
+	box-shadow: $box_shadow_small;
 
-    div {
-        line-height: 1;
-    }
+	div {
+		line-height: 1;
+	}
 
-    &__img {
-        width: 80px;
-        height: 80px;
-        border: 1px solid #ccc;
-        overflow: hidden;
-    }
+	&__info {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
 
-    &__info {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+	&__name {
+		padding-right: 20px;
+		text-transform: uppercase;
+	}
 
-    &__name {
-        padding-right: 20px;
-        text-transform: uppercase;
-    }
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 15px;
+	}
 
-    &__row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-    }
+	&__action {
+		position: absolute;
+		top: 0;
+		right: 0;
 
-    &__action {
-        position: absolute;
-        top: 0;
-        right: 0;
+		&-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 4px;
+			background: none;
 
-        &-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
-            background: none;
+			svg {
+				transition: fill $transition;
+			}
 
-            svg {
-                transition: fill $transition;
-            }
+			&:hover,
+			&--active {
+				svg {
+					fill: teal;
+				}
+			}
+		}
+	}
 
-            &:hover,
-            &--active {
-                svg {
-                    fill: teal;
-                }
-            }
-        }
-    }
+	&__menu {
+		position: absolute;
+		top: 100%;
+		right: -5px;
+		padding: 15px 0;
+		background: white;
+		box-shadow: $box_shadow_small;
 
-    &__menu {
-        position: absolute;
-        top: 100%;
-        right: -5px;
-        padding: 15px 0;
-        background: white;
-        box-shadow: $box_shadow_small;
+		&-btn {
+			text-align-last: left;
+			width: 100%;
+			padding: 5px 25px;
+			opacity: 0.7;
+			background: white;
+			transition: opacity $transition;
 
-        &-btn {
-            text-align-last: left;
-            width: 100%;
-            padding: 5px 25px;
-            opacity: 0.7;
-            background: white;
-            transition: opacity $transition;
+			&:not(:last-child) {
+				margin-bottom: 5px;
+			}
 
-            &:not(:last-child) {
-                margin-bottom: 5px;
-            }
+			&:first-child {
+				color: teal;
+			}
 
-            &:first-child {
-                color: teal;
-            }
+			&:last-child {
+				color: red;
+			}
 
-            &:last-child {
-                color: red;
-            }
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
 }
