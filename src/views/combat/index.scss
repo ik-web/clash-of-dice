@@ -2,8 +2,14 @@
 @use '@/assets/scss/_mixins.scss' as *;
 
 .combat {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, 220px);
-	justify-content: center;
-	gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 220px);
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+
+    @include tablet {
+        padding: 0;
+        gap: 20px;
+    }
 }

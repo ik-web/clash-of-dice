@@ -4,55 +4,55 @@ import VButton from '@/components/ui/button/VButton.vue';
 import UnitImg from '@/components/shared/unit-img/UnitImg.vue';
 
 export default defineComponent({
-	components: { VButton, UnitImg },
+    components: { VButton, UnitImg },
 
-	props: {
-		unit: {
-			type: Object,
-			required: true,
-		},
-	},
+    props: {
+        unit: {
+            type: Object,
+            required: true,
+        },
+    },
 
-	emits: ['edit', 'refresh', 'delete'],
+    emits: ['edit', 'refresh', 'delete'],
 
-	setup() {
-		const isMenuOpened = ref(false);
-		const actionBtn = useTemplateRef('actionBtn');
-		const actionMenu = useTemplateRef('actionMenu');
+    setup() {
+        const isMenuOpened = ref(false);
+        const actionBtn = useTemplateRef('actionBtn');
+        const actionMenu = useTemplateRef('actionMenu');
 
-		const toggleMenu = () => {
-			isMenuOpened.value = !isMenuOpened.value;
-		};
+        const toggleMenu = () => {
+            isMenuOpened.value = !isMenuOpened.value;
+        };
 
-		const closeMenu = (e) => {
-			const clickedOutside =
-				actionBtn.value &&
-				actionMenu.value &&
-				!actionBtn.value.contains(e.target) &&
-				!actionMenu.value.contains(e.target);
+        const closeMenu = e => {
+            const clickedOutside =
+                actionBtn.value &&
+                actionMenu.value &&
+                !actionBtn.value.contains(e.target) &&
+                !actionMenu.value.contains(e.target);
 
-			if (clickedOutside) {
-				isMenuOpened.value = false;
-			}
-		};
+            if (clickedOutside) {
+                isMenuOpened.value = false;
+            }
+        };
 
-		onMounted(() => {
-			document.addEventListener('click', closeMenu);
-		});
+        onMounted(() => {
+            document.addEventListener('click', closeMenu);
+        });
 
-		onBeforeMount(() => {
-			document.removeEventListener('click', closeMenu);
-		});
+        onBeforeMount(() => {
+            document.removeEventListener('click', closeMenu);
+        });
 
-		return {
-			formatHP,
-			formatXP,
-			formatCR,
-			formatImg,
+        return {
+            formatHP,
+            formatXP,
+            formatCR,
+            formatImg,
 
-			isMenuOpened,
+            isMenuOpened,
 
-			toggleMenu,
-		};
-	},
+            toggleMenu,
+        };
+    },
 });
