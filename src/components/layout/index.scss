@@ -170,6 +170,10 @@ $page-padding: 15px;
         &--score {
             background: url('@/assets/img/book.webp') center right / contain no-repeat;
         }
+
+        &--encounters-combat {
+            background: url('@/assets/img/combat.jpg') center / cover no-repeat;
+        }
     }
 
     &__overlay {
@@ -177,7 +181,7 @@ $page-padding: 15px;
         height: 100%;
         min-height: 100%;
         padding: 15px;
-        background: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.7);
         overflow: auto;
     }
 }

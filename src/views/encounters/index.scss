@@ -6,6 +6,7 @@
         @include items_grid;
 
         .encounter {
+            position: relative;
             padding: 15px;
             background: white;
             box-shadow: $box_shadow_small;
@@ -55,6 +56,37 @@
 
                 @include mobile {
                     grid-column: 2;
+                }
+            }
+
+            &__menu {
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                &-btn {
+                    text-align-last: left;
+                    width: 100%;
+                    padding: 5px 25px;
+                    opacity: 0.7;
+                    background: white;
+                    transition: opacity $transition;
+
+                    &:not(:last-child) {
+                        margin-bottom: 5px;
+                    }
+
+                    &:first-child {
+                        color: teal;
+                    }
+
+                    &:last-child {
+                        color: red;
+                    }
+
+                    &:hover {
+                        opacity: 1;
+                    }
                 }
             }
         }

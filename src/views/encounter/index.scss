@@ -1,7 +1,7 @@
 @use '@/assets/scss/_vars.scss' as *;
 @use '@/assets/scss/_mixins.scss' as *;
 
-.encounter-builder {
+.encounter {
     &__header {
         display: flex;
         justify-content: space-between;
@@ -9,6 +9,7 @@
         margin: -15px -15px 15px -15px;
         padding: 15px;
         background: rgba(255, 255, 255, 0.8);
+        box-shadow: 1px 1px 2px #aaa;
 
         @include tablet {
             flex-direction: column-reverse;

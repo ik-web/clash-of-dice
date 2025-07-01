@@ -1,24 +1,24 @@
 <template>
     <page-layout>
-        <div class="encounter-builder">
-            <header class="encounter-builder__header">
-                <div class="encounter-builder__header-col">
+        <div class="encounter">
+            <header class="encounter__header">
+                <div class="encounter__header-col">
                     <v-button
-                        class="encounter-builder__header-btn"
+                        class="encounter__header-btn"
                         color="green"
                         title="Create character"
                         label="Characters"
                         @click="openCharBuilder"
                     />
                     <v-button
-                        class="encounter-builder__header-btn"
+                        class="encounter__header-btn"
                         color="red"
                         title="Add monster"
                         label="Monsters"
                         @click="openMonsterBuilder"
                     />
                     <v-button
-                        class="encounter-builder__header-btn"
+                        class="encounter__header-btn"
                         color="gray"
                         title="Add a party"
                         label="Parties"
@@ -26,15 +26,15 @@
                     />
                 </div>
 
-                <div class="encounter-builder__header-col">
+                <div class="encounter__header-col">
                     <input
-                        class="encounter-builder__header-input"
+                        class="encounter__header-input"
                         type="text"
                         v-model="encounterName"
                         placeholder="Encounter name"
                     />
                     <v-button
-                        class="encounter-builder__header-btn"
+                        class="encounter__header-btn"
                         color="green"
                         label="Save"
                         :disabled="!encounterName"
@@ -43,7 +43,7 @@
                 </div>
             </header>
 
-            <div class="encounter-builder__units">
+            <div class="encounter__units">
                 <encounter-unit
                     v-for="unit in units"
                     :key="unit.id"

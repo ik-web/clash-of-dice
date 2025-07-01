@@ -15,7 +15,7 @@
                 size="196px"
                 alt="Unit image"
                 :src="formatImg(unit.image)"
-                cover
+                :cover="!unit.class"
             />
         </div>
 

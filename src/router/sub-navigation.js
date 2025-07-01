@@ -6,8 +6,8 @@ export const subNavigation = {
             label: 'My encounters',
         },
         {
-            path: '/encounters/builder',
-            name: 'encounters-builder',
+            path: '/encounters/encounter/create',
+            name: 'encounters-encounter',
             label: 'Encounter builder',
         },
     ],

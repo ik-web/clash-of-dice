@@ -6,7 +6,7 @@ import PartiesView from '@/views/parties/PartiesView.vue';
 import BestiaryView from '@/views/bestiary/BestiaryView.vue';
 import SettingsView from '@/views/settings/SettingsView.vue';
 import EncountersView from '@/views/encounters/EncountersView.vue';
-import EncounterBuilderView from '@/views/encounter-builder/EncounterBuilderView.vue';
+import EncounterView from '@/views/encounter/EncounterView.vue';
 
 export const routes = [
     {
@@ -27,9 +27,9 @@ export const routes = [
         },
     },
     {
-        path: '/encounters/builder',
-        name: 'encounters-builder',
-        component: EncounterBuilderView,
+        path: '/encounters/encounter/:id',
+        name: 'encounters-encounter',
+        component: EncounterView,
         meta: {
             subNavigation: subNavigation.encounters,
         },

@@ -32,38 +32,10 @@
         gap: 15px;
     }
 
-    &__action {
+    &__menu {
         position: absolute;
         top: 0;
         right: 0;
-
-        &-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
-            background: none;
-
-            svg {
-                transition: fill $transition;
-            }
-
-            &:hover,
-            &--active {
-                svg {
-                    fill: teal;
-                }
-            }
-        }
-    }
-
-    &__menu {
-        position: absolute;
-        top: 100%;
-        right: -5px;
-        padding: 15px 0;
-        background: white;
-        box-shadow: $box_shadow_small;
 
         &-btn {
             text-align-last: left;

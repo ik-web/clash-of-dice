@@ -13,7 +13,7 @@ router.beforeEach((to, from, next) => {
     const { encounters } = storeToRefs(encounterStore);
 
     if (to.name === 'encounters' && !encounters.value.length) {
-        router.push({ name: 'encounters-builder' });
+        router.push({ name: 'encounters-encounter' });
     }
 
     next();

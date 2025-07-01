@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import { deleteUnit, updateUnit } from '@/utils/units';
 
 const STORAGE_KEY = 'encounters';
 
@@ -26,9 +27,15 @@ export const useEncounterStore = defineStore('encounter', () => {
         saveEncounterState();
     };
 
-    const updateEncounter = (id, data) => {};
+    const updateEncounter = (id, data) => {
+        encounters.value = updateUnit(id, data, encounters.value);
+        saveEncounterState();
+    };
 
-    const deleteEncounter = id => {};
+    const deleteEncounter = id => {
+        encounters.value = deleteUnit(id, encounters.value);
+        saveEncounterState();
+    };
 
     const loadEncounterState = () => {
         const encountersInStorage = localStorage.getItem(STORAGE_KEY);

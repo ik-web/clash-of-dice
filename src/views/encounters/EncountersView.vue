@@ -34,18 +34,26 @@
                         />
                     </div>
 
-                    <!-- <div class="encounters__item-actions">
-                        <v-button
-                            color="gray"
-                            label="Edit"
-                            upper
-                        />
-                        <v-button
-                            color="green"
-                            label="Refresh"
-                            upper
-                        />
-                    </div> -->
+                    <unit-menu class="encounter__menu">
+                        <button
+                            class="encounter__menu-btn"
+                            @click="refreshEncounter(encounter)"
+                        >
+                            Refresh
+                        </button>
+                        <button
+                            class="encounter__menu-btn"
+                            @click="editEncounter(encounter.id)"
+                        >
+                            Edit
+                        </button>
+                        <button
+                            class="encounter__menu-btn"
+                            @click="deleteEncounter(encounter.id)"
+                        >
+                            Delete
+                        </button>
+                    </unit-menu>
                 </div>
             </div>
         </div>

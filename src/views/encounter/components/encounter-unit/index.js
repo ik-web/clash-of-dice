@@ -2,9 +2,10 @@ import { defineComponent, onBeforeMount, onMounted, ref, useTemplateRef } from '
 import { formatHP, formatImg, formatXP, formatCR } from '@/utils/formatter';
 import VButton from '@/components/ui/button/VButton.vue';
 import UnitImg from '@/components/shared/unit-img/UnitImg.vue';
+import UnitMenu from '@/components/shared/unit-menu/UnitMenu.vue';
 
 export default defineComponent({
-    components: { VButton, UnitImg },
+    components: { VButton, UnitImg, UnitMenu },
 
     props: {
         unit: {
