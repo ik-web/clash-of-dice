@@ -2,149 +2,149 @@
 @use '@/assets/scss/_mixins.scss' as *;
 
 .combat-card {
-    @include border_wood(10px);
-    display: flex;
-    flex-direction: column;
-    width: 220px;
-    height: 320px;
-    background: $color_wood;
-    box-shadow: $box_shadow_small;
-    transition: box-shadow 0.5s linear;
+	@include border_wood(10px);
+	display: flex;
+	flex-direction: column;
+	width: 220px;
+	height: 320px;
+	background: $color_wood;
+	box-shadow: $box_shadow_small;
+	transition: box-shadow 0.5s linear;
 
-    &__img {
-        @include box_shadow_inset;
-        position: relative;
-        width: 200px;
-        height: 200px;
-        padding: 2px;
+	&__img {
+		@include box_shadow_inset;
+		position: relative;
+		width: 200px;
+		height: 200px;
+		padding: 2px;
 
-        &::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            display: block;
-            width: 196px;
-            height: 196px;
-            background: transparent;
-        }
-    }
+		&::after {
+			content: '';
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			display: block;
+			width: 196px;
+			height: 196px;
+			background: transparent;
+		}
+	}
 
-    &__name {
-        position: relative;
-        z-index: 10;
-        margin-top: -10px;
-        padding: 3px 0;
-        font-family: $font_family_decor;
-        font-size: 14px;
-        text-align: center;
-        line-height: 18px;
-        color: white;
-        background: $color_wood;
-    }
+	&__name {
+		position: relative;
+		z-index: 10;
+		margin-top: -10px;
+		padding: 3px 0;
+		font-family: $font_family_decor;
+		font-size: 14px;
+		text-align: center;
+		line-height: 18px;
+		color: white;
+		background: $color_wood;
+	}
 
-    &__info {
-        @include box_shadow_inset;
-        position: relative;
-        height: 100%;
-        padding: 2px;
+	&__info {
+		@include box_shadow_inset;
+		position: relative;
+		height: 100%;
+		padding: 2px;
 
-        &-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            height: 100%;
-        }
+		&-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2px;
+			height: 100%;
+		}
 
-        &-btn {
-            @include box_shadow_raised;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            height: 40px;
-            padding: 5px;
-            line-height: 1;
-            white-space: nowrap;
-            background: $color_papyrus;
-            transition: box-shadow $transition;
+		&-btn {
+			@include box_shadow_raised;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+			height: 40px;
+			padding: 5px;
+			line-height: 1;
+			white-space: nowrap;
+			background: $color_papyrus;
+			transition: box-shadow $transition;
 
-            &:active {
-                @include box_shadow_inset;
-            }
+			&:active {
+				@include box_shadow_inset;
+			}
 
-            svg {
-                width: 22px;
-                height: 22px;
-                fill: #555;
-            }
+			svg {
+				width: 22px;
+				height: 22px;
+				fill: #555;
+			}
 
-            span {
-                flex-grow: 0;
-                line-height: 25px;
-            }
-        }
+			span {
+				flex-grow: 0;
+				line-height: 25px;
+			}
+		}
+	}
 
-        &-indicator {
-            @include border_wood(5px, 60deg);
-            @include box_shadow_raised;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-            width: 25px;
-            height: 25px;
-            background: $color_silver;
-            transition: background 0.5s linear;
-        }
-    }
+	&__indicator {
+		@include border_wood(5px, 60deg);
+		@include box_shadow_raised;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(45deg);
+		width: 25px;
+		height: 25px;
+		background: $color_silver;
+		transition: background 0.5s linear;
+	}
 
-    &--active {
-        .combat-card__info-indicator {
-            background: $color_nefrit;
-        }
+	&--active {
+		.combat-card__indicator {
+			background: $color_nefrit;
+		}
 
-        box-shadow: $box_shadow_main;
-    }
+		box-shadow: $box_shadow_main;
+	}
 
-    &--wait {
-        .combat-card__info-indicator {
-            background: $color_ruby;
-        }
-    }
+	&--wait {
+		.combat-card__indicator {
+			background: $color_ruby;
+		}
+	}
 
-    &--bloodied {
-        .combat-card__img {
-            &::after {
-                background: linear-gradient(
-                    to top,
-                    rgba(255, 0, 0, 0.8),
-                    rgba(255, 0, 0, 0.2),
-                    transparent
-                );
-            }
-        }
-    }
+	&--bloodied {
+		.combat-card__img {
+			&::after {
+				background: linear-gradient(
+					to top,
+					rgba(255, 0, 0, 0.8),
+					rgba(255, 0, 0, 0.2),
+					transparent
+				);
+			}
+		}
+	}
 
-    &--out {
-        border-image: none;
-        box-shadow: none;
+	&--out {
+		border-image: none;
+		box-shadow: none;
 
-        .combat-card__name {
-            background: #333;
-        }
+		.combat-card__name {
+			background: #333;
+		}
 
-        .combat-card__img {
-            &::after {
-                background: black url('@/assets/img/skull.webp') center / contain no-repeat;
-                opacity: 0.3;
-            }
-        }
+		.combat-card__img {
+			&::after {
+				background: black url('@/assets/img/skull.webp') center / contain no-repeat;
+				opacity: 0.3;
+			}
+		}
 
-        .combat-card__info-indicator {
-            background: black;
-            border-image: none;
-            box-shadow: none;
-        }
-    }
+		.combat-card__indicator {
+			background: black;
+			border-image: none;
+			box-shadow: none;
+		}
+	}
 }

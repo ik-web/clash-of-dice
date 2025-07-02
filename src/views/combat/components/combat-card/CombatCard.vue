@@ -83,7 +83,7 @@
                 </button>
             </div>
 
-            <div class="combat-card__info-indicator"></div>
+            <div class="combat-card__indicator"></div>
         </div>
     </div>
 </template>
