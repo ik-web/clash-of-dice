@@ -1,5 +1,8 @@
 <template>
-    <v-modal :open="open">
+    <v-modal
+        :open="open"
+        @close="$emit('update:open', false)"
+    >
         <div class="confirm-modal">
             <p class="confirm-modal__message">
                 <slot>
