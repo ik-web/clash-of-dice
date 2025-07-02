@@ -37,6 +37,16 @@ export const useEncounterStore = defineStore('encounter', () => {
         saveEncounterState();
     };
 
+    const updateEncounterUnit = (encaunterId, unit) => {
+        const encounter = getEncounter(encaunterId);
+        const unitIndex = encounter.units.findIndex(u => u.id === unit.id);
+
+        if (unitIndex < 0) return;
+
+        encounter.units[unitIndex] = unit;
+        saveEncounterState();
+    };
+
     const loadEncounterState = () => {
         const encountersInStorage = localStorage.getItem(STORAGE_KEY);
 
@@ -58,6 +68,8 @@ export const useEncounterStore = defineStore('encounter', () => {
         createEncounter,
         updateEncounter,
         deleteEncounter,
+
+        updateEncounterUnit,
 
         saveEncounterState,
         loadEncounterState,

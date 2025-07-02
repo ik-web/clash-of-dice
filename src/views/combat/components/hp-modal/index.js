@@ -17,10 +17,10 @@ export default defineComponent({
     setup(props, { emit }) {
         const input = ref('');
         const open = toRef(props, 'open');
-        const inputRef = useTemplateRef('initiativeInput');
+        const inputRef = useTemplateRef('hpInput');
 
-        const onSubmit = () => {
-            emit('set', input.value);
+        const onClick = type => {
+            emit('set', { type, value: input.value });
             emit('update:open', false);
             input.value = '';
         };
@@ -34,6 +34,6 @@ export default defineComponent({
 
         watch(open, setInputFocus);
 
-        return { input, onSubmit };
+        return { input, onClick };
     },
 });
