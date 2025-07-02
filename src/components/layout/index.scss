@@ -176,6 +176,10 @@ $page-padding: 15px;
 		&--score {
 			background: url('@/assets/img/book.webp') center right / contain no-repeat;
 		}
+
+		&--not-found {
+			background: url('@/assets/img/skeleton.png') center / contain no-repeat;
+		}
 	}
 
 	&__overlay {
