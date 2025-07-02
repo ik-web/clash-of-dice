@@ -17,6 +17,7 @@
         width: 200px;
         height: 200px;
         padding: 2px;
+        background: rgba(0, 0, 0, 0.5);
 
         &::after {
             content: '';
