@@ -1,0 +1,17 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.more-info {
+    &__name {
+        margin-bottom: 5px;
+        font-family: $font_family_decor;
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__about {
+        width: max-content;
+        margin: 0 auto;
+    }
+}

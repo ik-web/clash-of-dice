@@ -2,14 +2,22 @@ import { computed, defineComponent, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { formatHP, formatImg } from '@/utils/formatter';
 import { useEncounterStore } from '@/store/encounter';
-import UnitImg from '@/components/shared/unit-img/UnitImg.vue';
 import HpModal from '../hp-modal/HpModal.vue';
+import MoreDrawer from '../more-info/MoreInfo.vue';
+import UnitImg from '@/components/shared/unit-img/UnitImg.vue';
+import DefenceDrawer from '../defence-info/DefenceInfo.vue';
 import initiativeModal from '../initiative-modal/InitiativeModal.vue';
 
 const MAX_INITIATIVE = 40;
 
 export default defineComponent({
-    components: { UnitImg, initiativeModal, HpModal },
+    components: {
+        UnitImg,
+        HpModal,
+        MoreDrawer,
+        DefenceDrawer,
+        initiativeModal,
+    },
 
     props: {
         unit: {
@@ -29,6 +37,8 @@ export default defineComponent({
 
         const isHpModal = ref(false);
         const isIniativeModal = ref(false);
+        const isMoreDrawer = ref(false);
+        const isDefenceDrawer = ref(false);
 
         const isActive = false;
         const isWaiting = false;
@@ -43,6 +53,14 @@ export default defineComponent({
 
         const openInitiativeModal = () => {
             isIniativeModal.value = true;
+        };
+
+        const openMoreDrawer = () => {
+            isMoreDrawer.value = true;
+        };
+
+        const openDefenceDrawer = () => {
+            isDefenceDrawer.value = true;
         };
 
         const setHp = ({ type, value }) => {
@@ -73,13 +91,13 @@ export default defineComponent({
             updateEncounterUnit(encounterId.value, unit);
         };
 
-        onMounted(() => console.log(props.unit));
-
         return {
             formatHP,
             formatImg,
 
             isHpModal,
+            isMoreDrawer,
+            isDefenceDrawer,
             isIniativeModal,
 
             isOut,
@@ -90,6 +108,8 @@ export default defineComponent({
             setHp,
             openHpModal,
             setInitiative,
+            openMoreDrawer,
+            openDefenceDrawer,
             openInitiativeModal,
         };
     },

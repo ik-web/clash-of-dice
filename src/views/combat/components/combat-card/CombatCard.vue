@@ -28,6 +28,7 @@
                 <button
                     class="combat-card__info-btn"
                     title="Armor class (AC)"
+                    @click="openDefenceDrawer"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -75,6 +76,7 @@
                 <button
                     class="combat-card__info-btn"
                     title="Show details and actions"
+                    @click="openMoreDrawer"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -101,6 +103,16 @@
             v-model:open="isHpModal"
             :unitName="unit.name"
             @set="setHp"
+        />
+
+        <defence-drawer
+            v-model:open="isDefenceDrawer"
+            :unit="unit"
+        />
+
+        <more-drawer
+            v-model:open="isMoreDrawer"
+            :unit="unit"
         />
     </div>
 </template>

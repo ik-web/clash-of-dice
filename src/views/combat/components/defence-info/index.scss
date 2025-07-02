@@ -1,0 +1,32 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.defence-info {
+    &__name {
+        margin-bottom: 5px;
+        font-family: $font_family_decor;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    &__name,
+    &__heading {
+        text-align: center;
+    }
+
+    &__heading {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    &__about {
+        width: max-content;
+        margin: 0 auto;
+    }
+
+    &__row {
+        &-title {
+            font-weight: 600;
+        }
+    }
+}
