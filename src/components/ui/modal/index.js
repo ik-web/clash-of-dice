@@ -12,7 +12,13 @@ export default defineComponent({
         },
     },
 
-    setup() {
-        return {};
+    emits: ['close'],
+
+    setup(_props, { emit }) {
+        const closeModal = () => {
+            emit('close', false);
+        };
+
+        return { closeModal };
     },
 });

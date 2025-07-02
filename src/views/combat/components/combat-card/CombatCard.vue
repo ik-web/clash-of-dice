@@ -39,9 +39,11 @@
                     </svg>
                     <span>{{ unit.ac }}</span>
                 </button>
+
                 <button
                     class="combat-card__info-btn"
                     title="Hit points (HP)"
+                    @click="openHpModal"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -53,9 +55,11 @@
                     </svg>
                     <span>{{ unit.currentHP }}</span>
                 </button>
+
                 <button
                     class="combat-card__info-btn"
                     title="Initiative"
+                    @click="openInitiativeModal"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +71,7 @@
                     </svg>
                     <span>{{ +unit.initiative }}</span>
                 </button>
+
                 <button
                     class="combat-card__info-btn"
                     title="Show details and actions"
@@ -85,6 +90,18 @@
 
             <div class="combat-card__indicator"></div>
         </div>
+
+        <initiative-modal
+            v-model:open="isIniativeModal"
+            :unitName="unit.name"
+            @set="setInitiative"
+        />
+
+        <hp-modal
+            v-model:open="isHpModal"
+            :unitName="unit.name"
+            @set="setHp"
+        />
     </div>
 </template>
 

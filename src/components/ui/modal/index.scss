@@ -16,6 +16,7 @@
     background: rgba(0, 0, 0, 0.6);
 
     &__container {
+        position: relative;
         width: 100%;
         padding: 30px;
         background: white;
@@ -24,6 +25,10 @@
         @include mobile {
             padding: 20px;
         }
+    }
+
+    &__btn-close {
+        @include btn_close;
     }
 }
 

@@ -1,13 +1,13 @@
 @use '@/assets/scss/_vars.scss' as *;
 @use '@/assets/scss/_mixins.scss' as *;
 
-.initiative-modal {
+.hp-modal {
     padding: 20px 0;
 
     &__name {
         margin-bottom: 15px;
         font-family: $font_family_decor;
-        font-size: 18px;
+        font-size: 20px;
     }
 
     &__name,
@@ -21,7 +21,7 @@
 
     &__form {
         display: grid;
-        grid-template-columns: 100px 50px;
+        grid-template-columns: 50px 80px 50px;
         grid-template-rows: 40px;
         justify-content: center;
 

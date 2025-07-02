@@ -9,6 +9,11 @@
                 aria-modal="true"
                 :style="`max-width: ${width};`"
             >
+                <button
+                    class="modal__btn-close"
+                    @click="closeModal"
+                ></button>
+
                 <slot></slot>
             </div>
         </div>
