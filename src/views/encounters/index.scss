@@ -34,18 +34,21 @@
                 min-width: 80px;
                 padding: 5px 8px;
                 line-height: 1;
-                border: 1px solid green;
+                border: 1px solid;
 
                 &--ready {
                     color: green;
+                    border-color: green;
                 }
 
                 &--process {
                     color: #347fe0;
+                    border-color: #347fe0;
                 }
 
                 &--completed {
                     color: red;
+                    border-color: red;
                 }
             }
 

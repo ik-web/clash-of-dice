@@ -20,7 +20,7 @@ export const useEncounterStore = defineStore('encounter', () => {
             id: crypto.randomUUID(),
             name: data.name,
             units: data.units,
-            status: { value: 'ready', label: 'Ready' },
+            status: { label: 'Ready', value: 'ready' },
         };
 
         encounters.value = [...encounters.value, newEncounter];
