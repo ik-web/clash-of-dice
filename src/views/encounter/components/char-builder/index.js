@@ -5,6 +5,7 @@ import { createUnit, deleteUnit } from '@/utils/units';
 import VDrawer from '@/components/ui/drawer/VDrawer.vue';
 import VSelect from '@/components/ui/select/VSelect.vue';
 import VButton from '@/components/ui/button/VButton.vue';
+import { dndApiService } from '@/services/dnd-api';
 
 const getCharForm = () => ({
     id: '',
@@ -16,13 +17,8 @@ const getCharForm = () => ({
     image: '',
     currentHP: 0,
     initiative: null,
-    class: classes[0],
+    class: 'barbarian',
 });
-
-const charClasses = classes.map(charClass => ({
-    label: charClass,
-    value: charClass,
-}));
 
 export default defineComponent({
     components: { VDrawer, VSelect, VButton },
@@ -39,8 +35,16 @@ export default defineComponent({
     setup(props, { emit }) {
         const formData = ref(getCharForm());
         const characters = ref([]);
+        const charactersData = ref([]);
 
         const isAddDisabled = computed(() => !formData.value.name);
+
+        const classOptions = computed(() => {
+            return charactersData.value.map(item => ({
+                label: item.name,
+                value: item.index,
+            }));
+        });
 
         const charLevels = computed(() => {
             return Object.keys(leveling).map(lvl => ({
@@ -64,10 +68,18 @@ export default defineComponent({
             }
         };
 
-        const prepareChar = () => {
+        const fetchCharactersData = async () => {
+            const { results } = await dndApiService.getAllClasses();
+            charactersData.value = results;
+        };
+
+        const prepareChar = async () => {
             if (isAddDisabled.value) return;
 
             const form = formData.value;
+
+            const charData = await dndApiService.getClassByIndex(form.class);
+
             const minHP = 6;
             const minAC = 10;
             const computedHP = +form.hp <= 0 ? minHP : +form.hp;
@@ -77,11 +89,13 @@ export default defineComponent({
             form.hp = computedHP;
             form.ac = computedAC;
             form.xp = computedXP;
+            form.data = charData;
             form.initiative = null;
             form.currentHP = computedHP;
             form.image = getClassImage(form.class);
 
             const char = createUnit(form);
+
             characters.value.push(char);
             formData.value = getCharForm();
         };
@@ -101,12 +115,13 @@ export default defineComponent({
         };
 
         watchEffect(setFormData);
+        watchEffect(() => fetchCharactersData());
 
         return {
             formData,
             charLevels,
             characters,
-            charClasses,
+            classOptions,
             isAddDisabled,
 
             removeChar,

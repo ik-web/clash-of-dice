@@ -28,7 +28,7 @@
                                 <span>Class:</span>
                                 <v-select
                                     v-model="formData.class"
-                                    :options="charClasses"
+                                    :options="classOptions"
                                 />
                             </label>
 
