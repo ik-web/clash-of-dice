@@ -21,7 +21,9 @@ export default defineComponent({
                 !menuBtn.value.contains(e.target) &&
                 !menuPopup.value.contains(e.target);
 
-            if (clickedOutside) {
+            const clickedButton = e.target.nodeName === 'BUTTON';
+
+            if (clickedOutside || clickedButton) {
                 isOpened.value = false;
             }
         };
