@@ -9,13 +9,13 @@ import { dndApiService } from '@/services/dnd-api';
 
 const getCharForm = () => ({
     id: '',
-    xp: 0,
+    exp: 0,
     lvl: 1,
-    name: '',
-    ac: null,
-    hp: null,
-    image: '',
-    currentHP: 0,
+    name: null,
+    image: null,
+    currentHP: null,
+    defaultAC: null,
+    defaultHP: null,
     initiative: null,
     class: 'barbarian',
 });
@@ -61,10 +61,10 @@ export default defineComponent({
         const getExpByLevel = lvl => {
             if (formData.value.xp >= leveling[lvl]) {
                 return leveling[lvl] - 1;
-            } else if (formData.value.xp < leveling[lvl - 1]) {
+            } else if (formData.value.exp < leveling[lvl - 1]) {
                 return leveling[lvl - 1];
             } else {
-                return formData.value.xp;
+                return formData.value.exp;
             }
         };
 
@@ -77,26 +77,32 @@ export default defineComponent({
             if (isAddDisabled.value) return;
 
             const form = formData.value;
-
             const charData = await dndApiService.getClassByIndex(form.class);
 
-            const minHP = 6;
             const minAC = 10;
-            const computedHP = +form.hp <= 0 ? minHP : +form.hp;
-            const computedAC = +form.ac <= 0 ? minAC : +form.ac;
-            const computedXP = +form.xp < 0 ? 0 : getExpByLevel(form.lvl);
+            const minHP = charData.hit_die;
 
-            form.hp = computedHP;
-            form.ac = computedAC;
-            form.xp = computedXP;
-            form.data = charData;
-            form.initiative = null;
-            form.currentHP = computedHP;
+            const computedXP = +form.exp < 0 ? 0 : getExpByLevel(form.lvl);
+            const computedAC = +form.defaultAC <= 0 ? minAC : +form.defaultAC;
+            const computedHP = +form.defaultHP <= 0 ? minHP : +form.defaultHP;
+
+            form.exp = computedXP;
             form.image = getClassImage(form.class);
 
-            const char = createUnit(form);
+            form.currentAC = computedAC;
+            form.defaultAC = computedAC;
 
-            characters.value.push(char);
+            form.tempHP = null;
+            form.overrideHP = null;
+            form.defaultHP = computedHP;
+            form.currentHP = computedHP;
+
+            form.initiative = null;
+            form.data = charData;
+
+            const newChar = createUnit(form);
+
+            characters.value.push(newChar);
             formData.value = getCharForm();
         };
 

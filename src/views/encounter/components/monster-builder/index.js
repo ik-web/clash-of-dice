@@ -56,20 +56,23 @@ export default defineComponent({
         const fetchMonsterByIndex = async index => {
             const response = await dndApiService.getMonsterByIndex(index);
             const monster = {
-                data: response,
-                xp: response.xp,
-                initiative: null,
+                exp: response.xp,
                 name: response.name,
                 type: response.type,
                 image: response.image,
-                hp: response.hit_points,
-                cr: response.challenge_rating,
-                currentHP: response.hit_points,
-                ac: response.armor_class[0].value,
-                spells: response.special_abilities[0]?.spellcasting?.spells || [],
-            };
+                CR: response.challenge_rating,
 
-            // console.log(monster);
+                defaultAC: response.armor_class[0].value,
+                currentAC: response.armor_class[0].value,
+
+                tempHP: null,
+                overrideHP: null,
+                defaultHP: response.hit_points,
+                currentHP: response.hit_points,
+
+                initiative: null,
+                data: response,
+            };
 
             return monster;
         };

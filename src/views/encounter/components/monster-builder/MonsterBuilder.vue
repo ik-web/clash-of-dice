@@ -4,8 +4,8 @@
         @close="$emit('update:open', false)"
     >
         <div class="monster-builder">
-            <div class="monster-builder__content">
-                <div class="monster-builder__content-left">
+            <div class="monster-builder__body">
+                <div class="monster-builder__body-left">
                     <h2 class="monster-builder__title">
                         {{ 'Add monsters' }}
                     </h2>
@@ -34,6 +34,7 @@
                             :key="monster.index"
                         >
                             <span>{{ monster.name }}</span>
+
                             <v-button
                                 class="monster-builder__monster-btn"
                                 color="green"
@@ -45,7 +46,7 @@
                     </div>
                 </div>
 
-                <div class="monster-builder__content-right">
+                <div class="monster-builder__body-right">
                     <h2 class="monster-builder__title">
                         {{ 'Selected monsters' }}
                     </h2>
@@ -83,10 +84,10 @@
                 </div>
             </div>
 
-            <div class="monster-builder__btn-container">
+            <div class="monster-builder__footer">
                 <v-button
                     color="gray"
-                    label="Cancel"
+                    label="Close"
                     upper
                     @click="$emit('update:open')"
                 />

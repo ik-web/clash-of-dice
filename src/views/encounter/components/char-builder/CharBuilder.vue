@@ -4,7 +4,7 @@
         @close="$emit('update:open', false)"
     >
         <div class="char-builder">
-            <div class="char-builder__content">
+            <div class="char-builder__body">
                 <div class="char-builder__col">
                     <h2 class="char-builder__title">
                         {{ 'Add character' }}
@@ -117,10 +117,10 @@
                 </div>
             </div>
 
-            <div class="char-builder__btn-container">
+            <div class="char-builder__footer">
                 <v-button
                     color="gray"
-                    label="Cancel"
+                    label="Close"
                     bold
                     upper
                     @click="$emit('update:open')"

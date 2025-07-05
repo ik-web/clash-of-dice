@@ -1,30 +1,30 @@
+@use 'sass:map';
 @use 'sass:color';
 @use '@/assets/scss/_vars.scss' as *;
 
-@mixin items_grid() {
+@mixin respond($size) {
+    $breakpoints-max: (
+        mobile: 480px,
+        tablet: 768px,
+        laptop: 1024px,
+        laptop_l: 1440px,
+    );
+
+    $bp: map.get($breakpoints-max, $size);
+
+    @if $bp {
+        @media (max-width: $bp) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint `#{$size}` is not defined.";
+    }
+}
+
+@mixin auto_grid($size: 290px) {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax($size, 1fr));
     gap: 15px;
-
-    @media (max-width: 2800px) {
-        grid-template-columns: repeat(5, 1fr);
-    }
-
-    @media (max-width: 2200px) {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (max-width: 1800px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @include tablet_large {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include tablet {
-        grid-template-columns: 1fr;
-    }
 }
 
 @mixin scroll_bar($color) {
@@ -48,11 +48,6 @@
     overflow-wrap: break-word;
 }
 
-@mixin border_wood($width, $direction: to right) {
-    border: $width, solid;
-    border-image: linear-gradient($direction, #2f2217, #6a4b2a, #2f2217) 1 stretch;
-}
-
 @mixin box_shadow_inset {
     box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.3),
         inset -4px -4px 10px rgba(255, 255, 255, 0.05);
@@ -62,10 +57,10 @@
     box-shadow: inset 1px 1px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
 }
 
-@mixin btn_close($size: 28px, $thickness: 2px, $color: #888) {
+@mixin btn_close($size: 30px, $thickness: 2px, $color: #888) {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 5px;
     z-index: 10;
     width: $size;
     height: $size;
@@ -104,20 +99,42 @@
     }
 }
 
-@mixin mobile {
-    @media (max-width: 480px) {
-        @content;
+@mixin drawer_body {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 100%;
+    padding: 0 40px;
+    gap: 40px;
+
+    @include respond(laptop) {
+        width: 100vw;
+    }
+
+    @include respond(mobile) {
+        padding: 0 15px;
     }
 }
 
-@mixin tablet {
-    @media (max-width: 768px) {
-        @content;
-    }
+@mixin drawer_footer($cols: 2) {
+    display: grid;
+    grid-template-columns: repeat($cols, minmax(100px, 200px));
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
 }
 
-@mixin tablet_large {
-    @media (max-width: 1024px) {
-        @content;
+@mixin card_size($card_width) {
+    $padding: 10px;
+    $screen_size: $card_width - ($padding * 2);
+
+    width: $card_width;
+    padding: $padding;
+
+    &__screen {
+        @include box_shadow_inset;
+        width: $screen_size;
+        height: $screen_size;
+        padding: 3px;
     }
 }

@@ -10,25 +10,39 @@
             },
         ]"
     >
-        <div class="combat-card__img">
-            <unit-img
-                size="196px"
-                alt="Unit image"
-                :src="formatImg(unit.image)"
-                :cover="!unit.class"
+        <div class="combat-card__screen">
+            <edit-menu
+                v-show="editType"
+                class="combat-card__edit-menu"
+                v-model:type="editType"
+                :unit="unit"
             />
+
+            <div class="combat-card__img">
+                <unit-img
+                    alt="Unit image"
+                    :src="formatImg(unit.image)"
+                    :cover="!unit.class"
+                />
+            </div>
         </div>
 
         <h3 class="combat-card__name">
             {{ unit.name }}
         </h3>
 
-        <div class="combat-card__info">
-            <div class="combat-card__info-grid">
+        <div class="combat-card__actions">
+            <div class="combat-card__btns">
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
+                    :class="[
+                        {
+                            'combat-card__btn--above': checkACAbove(unit),
+                            'combat-card__btn--below': checkACBelow(unit),
+                        },
+                    ]"
                     title="Armor class (AC)"
-                    @click="openDefenceDrawer"
+                    @click="editAC"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -38,13 +52,15 @@
                             d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Z"
                         />
                     </svg>
-                    <span>{{ unit.ac }}</span>
+                    <span>
+                        {{ unit.currentAC || unit.ac }}
+                    </span>
                 </button>
 
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
                     title="Hit points (HP)"
-                    @click="openHpModal"
+                    @click="editHP"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -58,9 +74,9 @@
                 </button>
 
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
                     title="Initiative"
-                    @click="openInitiativeModal"
+                    @click="setInitiative"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +90,7 @@
                 </button>
 
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
                     title="Show details and actions"
                     @click="openMoreDrawer"
                 >
@@ -90,25 +106,10 @@
                 </button>
             </div>
 
-            <div class="combat-card__indicator"></div>
+            <div class="combat-card__indicator">
+                <div></div>
+            </div>
         </div>
-
-        <initiative-modal
-            v-model:open="isIniativeModal"
-            :unitName="unit.name"
-            @set="setInitiative"
-        />
-
-        <hp-modal
-            v-model:open="isHpModal"
-            :unitName="unit.name"
-            @set="setHp"
-        />
-
-        <defence-drawer
-            v-model:open="isDefenceDrawer"
-            :unit="unit"
-        />
 
         <more-drawer
             v-model:open="isMoreDrawer"

@@ -21,10 +21,6 @@
         padding: 30px;
         background: white;
         box-shadow: $box_shadow_main;
-
-        @include mobile {
-            padding: 20px;
-        }
     }
 
     &__btn-close {

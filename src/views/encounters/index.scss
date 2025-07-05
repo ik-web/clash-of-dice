@@ -2,36 +2,38 @@
 @use '@/assets/scss/_mixins.scss' as *;
 
 .encounters {
-    &__list {
-        @include items_grid;
+    @include auto_grid(340px);
 
-        .encounter {
-            position: relative;
-            padding: 15px;
-            background: white;
-            box-shadow: $box_shadow_small;
+    @include respond(mobile) {
+        @include auto_grid;
+    }
 
-            &__name {
-                margin-bottom: 15px;
-                text-transform: uppercase;
-            }
+    .encounter {
+        position: relative;
+        padding: 15px;
+        background: white;
+        box-shadow: $box_shadow_small;
 
-            &__info {
-                display: grid;
-                grid-template-columns: 1fr auto auto;
-                align-items: center;
-                gap: 15px;
+        &__name {
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-                @include mobile {
-                    grid-template-columns: 1fr auto;
-                }
-            }
+        &__name,
+        &__participants {
+            margin-bottom: 10px;
+        }
 
-            &__status {
+        &__action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            &-status {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                min-width: 80px;
                 padding: 5px 8px;
                 line-height: 1;
                 border: 1px solid;
@@ -52,74 +54,46 @@
                 }
             }
 
-            &__play {
-                display: inline-flex;
-                min-width: 80px;
+            &-status,
+            &-play {
+                width: 100px;
                 height: 30px;
-
-                @include mobile {
-                    grid-column: 2;
-                }
             }
 
-            &__menu {
-                position: absolute;
-                top: 0;
-                right: 0;
-
-                &-btn {
-                    text-align-last: left;
-                    width: 100%;
-                    padding: 5px 25px;
-                    opacity: 0.7;
-                    background: white;
-                    transition: opacity $transition;
-
-                    &:not(:last-child) {
-                        margin-bottom: 5px;
-                    }
-
-                    &:first-child {
-                        color: teal;
-                    }
-
-                    &:last-child {
-                        color: red;
-                    }
-
-                    &:hover {
-                        opacity: 1;
-                    }
-                }
+            &-play {
+                display: inline-flex;
             }
         }
-    }
 
-    .encounter1 {
-        display: flex;
-        align-items: center;
-        gap: 15px 30px;
-        padding: 20px;
+        &__menu {
+            position: absolute;
+            top: 0;
+            right: 0;
 
-        @include mobile {
-            flex-direction: column;
-        }
+            &-btn {
+                text-align-last: left;
+                width: 100%;
+                padding: 5px 25px;
+                opacity: 0.7;
+                background: white;
+                transition: opacity $transition;
 
-        &__name {
-            flex-grow: 1;
-        }
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
 
-        &-content {
-            display: grid;
-            grid-template-columns: repeat(3, auto);
-            justify-content: center;
-            gap: 30px;
-        }
+                &:first-child {
+                    color: $color_green;
+                }
 
-        &-actions {
-            display: grid;
-            grid-template-columns: repeat(2, 100px);
-            gap: 15px;
+                &:last-child {
+                    color: red;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
     }
 }

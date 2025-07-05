@@ -2,18 +2,14 @@
 @use '@/assets/scss/_mixins.scss' as *;
 
 .combat {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 220px);
-    justify-content: center;
+    @include auto_grid($combat_card_width);
+    justify-items: center;
     gap: 30px;
-    padding: 15px 0;
+    padding: 10px 0;
 
-    @include tablet {
-        padding: 0;
-        gap: 20px;
-    }
-
-    @include mobile {
+    @include respond(mobile) {
+        @include auto_grid($combat_card_width_small);
         gap: 15px;
+        padding: 0;
     }
 }

@@ -26,8 +26,11 @@ export default defineComponent({
             const { id, units } = encounter;
             const refreshedUnits = units.map(unit => ({
                 ...unit,
+                tempHP: null,
+                overrideHP: null,
                 initiative: null,
-                currentHP: unit.hp,
+                currentAC: unit.defaultAC,
+                currentHP: unit.defaultHP,
             }));
             const data = {
                 units: refreshedUnits,

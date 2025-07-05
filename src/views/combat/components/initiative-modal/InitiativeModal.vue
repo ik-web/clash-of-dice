@@ -1,6 +1,7 @@
 <template>
     <v-modal
         :open="open"
+        width="400px"
         @close="$emit('update:open', false)"
     >
         <div class="initiative-modal">

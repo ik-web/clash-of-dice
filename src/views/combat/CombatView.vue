@@ -5,6 +5,7 @@
                 v-for="unit in units"
                 :key="unit.id"
                 :unit="unit"
+                :active="false"
             />
         </div>
     </page-layout>

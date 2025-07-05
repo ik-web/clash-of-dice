@@ -6,7 +6,7 @@
             @click="onMaskClick"
         >
             <div
-                :class="`drawer__container ${className}`"
+                class="drawer__container"
                 aria-modal="true"
                 ref="drawerContainer"
             >

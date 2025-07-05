@@ -3,7 +3,8 @@
 
 .encounter {
     &__header {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
         justify-content: space-between;
         gap: 15px;
         margin: -15px -15px 15px -15px;
@@ -11,30 +12,30 @@
         background: rgba(255, 255, 255, 0.8);
         box-shadow: 1px 1px 2px #aaa;
 
-        @include tablet {
-            flex-direction: column-reverse;
-        }
-
         &-col {
             display: grid;
-            max-width: 500px;
-            width: 100%;
+            width: 500px;
 
             &:nth-child(1) {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
-
-                @include tablet {
-                    gap: 0;
-                }
             }
 
             &:nth-child(2) {
                 grid-template-columns: 2fr 1fr;
+                margin-left: auto;
+
+                @include respond(tablet) {
+                    margin-left: 0;
+                }
             }
 
-            @include tablet_large {
-                max-width: 100%;
+            @include respond(laptop) {
+                width: 320px;
+            }
+
+            @include respond(tablet) {
+                width: 100%;
             }
         }
 
@@ -49,6 +50,10 @@
     }
 
     &__units {
-        @include items_grid;
+        @include auto_grid(340px);
+
+        @include respond(mobile) {
+            @include auto_grid;
+        }
     }
 }
