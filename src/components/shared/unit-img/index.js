@@ -10,10 +10,6 @@ export default defineComponent({
             type: String,
             default: '',
         },
-        size: {
-            type: String,
-            default: '80px',
-        },
         cover: {
             type: Boolean,
             default: false,

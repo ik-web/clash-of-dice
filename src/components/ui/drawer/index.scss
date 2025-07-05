@@ -15,18 +15,14 @@
     &__container {
         position: relative;
         margin-top: $height_header;
-        width: 50%;
+        width: max-content;
         height: 100%;
-        padding: 30px;
+        padding: 40px 0;
         background: white;
         box-shadow: -1px 0 2px #555;
 
-        @include tablet_large {
-            width: 100%;
-        }
-
-        @include mobile {
-            padding: 20px;
+        @include respond(mobile) {
+            padding-bottom: 15px;
         }
     }
 

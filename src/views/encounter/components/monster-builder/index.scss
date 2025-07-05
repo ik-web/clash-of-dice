@@ -2,23 +2,22 @@
 @use '@/assets/scss/_mixins.scss' as *;
 
 .monster-builder {
-    display: grid;
-    grid-template-rows: 1fr auto;
-    gap: 15px;
-    height: 100%;
+    @include drawer_body;
 
-    &__content {
+    &__body {
+        flex-grow: 1;
+
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin-bottom: 35px;
+        grid-template-columns: repeat(2, minmax(290px, 1fr));
+        gap: 30px;
+        overflow-x: auto;
 
-        @include tablet {
-            grid-template-columns: 1fr;
+        @include respond(tablet) {
+            grid-template-columns: repeat(2, 100%);
         }
 
-        @include tablet {
-            margin-bottom: 15px;
+        @include respond(mobile) {
+            gap: 15px;
         }
 
         &-left,
@@ -36,10 +35,6 @@
 
             .monster-builder__title {
                 margin-bottom: 20px;
-
-                @include mobile {
-                    margin-bottom: 0;
-                }
             }
         }
     }
@@ -95,14 +90,7 @@
         }
     }
 
-    &__btn-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        width: 100%;
-
-        @include tablet {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    &__footer {
+        @include drawer_footer;
     }
 }

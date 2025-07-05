@@ -12,7 +12,6 @@
     >
         <div class="combat-card__img">
             <unit-img
-                size="196px"
                 alt="Unit image"
                 :src="formatImg(unit.image)"
                 :cover="!unit.class"
@@ -23,10 +22,16 @@
             {{ unit.name }}
         </h3>
 
-        <div class="combat-card__info">
-            <div class="combat-card__info-grid">
+        <div class="combat-card__actions">
+            <div class="combat-card__btns">
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
+                    :class="[
+                        {
+                            'combat-card__btn--above': checkACAbove(unit),
+                            'combat-card__btn--below': checkACBelow(unit),
+                        },
+                    ]"
                     title="Armor class (AC)"
                     @click="openDefenceDrawer"
                 >
@@ -38,11 +43,13 @@
                             d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Z"
                         />
                     </svg>
-                    <span>{{ unit.ac }}</span>
+                    <span>
+                        {{ unit.spellAC || unit.ac }}
+                    </span>
                 </button>
 
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
                     title="Hit points (HP)"
                     @click="openHpModal"
                 >
@@ -58,7 +65,7 @@
                 </button>
 
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
                     title="Initiative"
                     @click="openInitiativeModal"
                 >
@@ -74,7 +81,7 @@
                 </button>
 
                 <button
-                    class="combat-card__info-btn"
+                    class="combat-card__btn"
                     title="Show details and actions"
                     @click="openMoreDrawer"
                 >
@@ -90,7 +97,9 @@
                 </button>
             </div>
 
-            <div class="combat-card__indicator"></div>
+            <div class="combat-card__indicator">
+                <div></div>
+            </div>
         </div>
 
         <initiative-modal

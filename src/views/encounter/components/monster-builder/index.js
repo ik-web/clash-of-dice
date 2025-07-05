@@ -59,6 +59,7 @@ export default defineComponent({
                 data: response,
                 xp: response.xp,
                 initiative: null,
+                spellAC: null,
                 name: response.name,
                 type: response.type,
                 image: response.image,
@@ -68,8 +69,6 @@ export default defineComponent({
                 ac: response.armor_class[0].value,
                 spells: response.special_abilities[0]?.spellcasting?.spells || [],
             };
-
-            // console.log(monster);
 
             return monster;
         };

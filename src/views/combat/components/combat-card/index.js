@@ -5,7 +5,7 @@ import { useEncounterStore } from '@/store/encounter';
 import HpModal from '../hp-modal/HpModal.vue';
 import MoreDrawer from '../more-info/MoreInfo.vue';
 import UnitImg from '@/components/shared/unit-img/UnitImg.vue';
-import DefenceDrawer from '../defence-info/DefenceInfo.vue';
+import DefenceDrawer from '../combat-defence/CombatDefence.vue';
 import initiativeModal from '../initiative-modal/InitiativeModal.vue';
 
 const MAX_INITIATIVE = 40;
@@ -46,6 +46,14 @@ export default defineComponent({
         const encounterId = computed(() => route.params.id);
         const isOut = computed(() => props.unit.currentHP <= 0);
         const isBloodied = computed(() => props.unit.currentHP <= props.unit.hp / 2);
+
+        const checkACAbove = unit => {
+            return unit.spellAC && unit.spellAC > unit.ac;
+        };
+
+        const checkACBelow = unit => {
+            return unit.spellAC && unit.spellAC < unit.ac;
+        };
 
         const openHpModal = () => {
             isHpModal.value = true;
@@ -94,12 +102,10 @@ export default defineComponent({
         return {
             formatHP,
             formatImg,
-
             isHpModal,
             isMoreDrawer,
             isDefenceDrawer,
             isIniativeModal,
-
             isOut,
             isActive,
             isWaiting,
@@ -107,6 +113,8 @@ export default defineComponent({
 
             setHp,
             openHpModal,
+            checkACAbove,
+            checkACBelow,
             setInitiative,
             openMoreDrawer,
             openDefenceDrawer,

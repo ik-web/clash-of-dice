@@ -17,10 +17,10 @@
                 @submit.prevent
             >
                 <v-button
-                    color="red"
-                    label="Hit"
+                    color="green"
+                    label="Heal"
                     upper
-                    @click="onClick('hit')"
+                    @click="onClick('heal')"
                 />
                 <input
                     class="hp-modal__form-input"
@@ -29,10 +29,10 @@
                     ref="hpInput"
                 />
                 <v-button
-                    color="green"
-                    label="Heal"
+                    color="red"
+                    label="Hit"
                     upper
-                    @click="onClick('heal')"
+                    @click="onClick('hit')"
                 />
             </form>
         </div>

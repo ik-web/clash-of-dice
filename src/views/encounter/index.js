@@ -44,7 +44,7 @@ export default defineComponent({
         };
 
         const onAddChars = chars => {
-            units.value.push(...chars);
+            units.value.unshift(...chars);
         };
 
         const onAddMonsters = monsters => {
@@ -56,6 +56,7 @@ export default defineComponent({
         const onRefreshUnit = unit => {
             const dataForUpdate = {
                 initiative: null,
+                spellAC: null,
                 currentHP: unit.hp,
             };
 

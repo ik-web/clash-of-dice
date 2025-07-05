@@ -37,37 +37,37 @@
 
     &--green {
         color: white;
-        background: teal;
+        background: $color_green;
 
         &:hover:not(:disabled) {
-            background: color.adjust(teal, $lightness: -5%);
+            background: color.adjust($color_green, $lightness: -5%);
         }
     }
 
     &--gray {
         color: white;
-        background: gray;
+        background: $color_gray;
 
         &:hover:not(:disabled) {
-            background: color.adjust(gray, $lightness: -5%);
+            background: color.adjust($color_gray, $lightness: -5%);
         }
     }
 
     &--red {
         color: white;
-        background: red;
+        background: $color_red;
 
         &:hover:not(:disabled) {
-            background: color.adjust(red, $lightness: -15%);
+            background: color.adjust($color_red, $lightness: -15%);
         }
     }
 
     &--blue {
-        color: $color_main;
-        background: lightblue;
+        color: white;
+        background: $color_blue;
 
         &:hover:not(:disabled) {
-            background: color.adjust(lightblue, $lightness: -10%);
+            background: color.adjust($color_blue, $lightness: -10%);
         }
     }
 }

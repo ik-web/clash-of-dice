@@ -27,6 +27,7 @@ export default defineComponent({
             const refreshedUnits = units.map(unit => ({
                 ...unit,
                 initiative: null,
+                spellAC: null,
                 currentHP: unit.hp,
             }));
             const data = {

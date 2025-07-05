@@ -80,8 +80,8 @@ export default defineComponent({
 
             const charData = await dndApiService.getClassByIndex(form.class);
 
-            const minHP = 6;
             const minAC = 10;
+            const minHP = charData.hit_die;
             const computedHP = +form.hp <= 0 ? minHP : +form.hp;
             const computedAC = +form.ac <= 0 ? minAC : +form.ac;
             const computedXP = +form.xp < 0 ? 0 : getExpByLevel(form.lvl);
@@ -91,6 +91,7 @@ export default defineComponent({
             form.xp = computedXP;
             form.data = charData;
             form.initiative = null;
+            form.spellAC = null;
             form.currentHP = computedHP;
             form.image = getClassImage(form.class);
 

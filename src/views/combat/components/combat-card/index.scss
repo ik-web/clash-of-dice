@@ -2,106 +2,124 @@
 @use '@/assets/scss/_mixins.scss' as *;
 
 .combat-card {
-    @include border_wood(10px);
-    display: flex;
-    flex-direction: column;
-    width: 220px;
-    height: 320px;
+    @include card_size($combat_card_width);
     background: $color_wood;
     box-shadow: $box_shadow_small;
     transition: box-shadow $transition;
 
+    @include respond(mobile) {
+        @include card_size($combat_card_width_small);
+        font-size: 14px;
+    }
+
     &__img {
         @include box_shadow_inset;
         position: relative;
-        width: 200px;
-        height: 200px;
-        padding: 2px;
         background: rgba(0, 0, 0, 0.5);
 
         &::after {
             content: '';
             position: absolute;
-            top: 2px;
-            left: 2px;
             display: block;
-            width: 196px;
-            height: 196px;
             background: transparent;
         }
     }
 
     &__name {
-        position: relative;
-        z-index: 10;
-        margin-top: -10px;
-        padding: 3px 0;
+        padding: 6px 0;
         font-family: $font_family_decor;
         font-size: 14px;
+        line-height: 1;
         text-align: center;
-        line-height: 18px;
         color: white;
-        background: $color_wood;
+
+        @include respond(mobile) {
+            font-size: 12px;
+        }
     }
 
-    &__info {
-        @include box_shadow_inset;
+    &__actions {
         position: relative;
-        height: 100%;
-        padding: 2px;
+    }
 
-        &-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            height: 100%;
+    &__btns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 40px);
+        gap: 4px;
+    }
+
+    &__btn {
+        @include box_shadow_raised;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 0;
+        line-height: 1;
+        white-space: nowrap;
+        background: $color_papyrus;
+        transition: box-shadow $transition;
+
+        @include respond(mobile) {
+            font-size: 14px;
         }
 
-        &-btn {
-            @include box_shadow_raised;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            height: 40px;
-            padding: 5px;
-            line-height: 1;
-            white-space: nowrap;
-            background: $color_papyrus;
-            transition: box-shadow $transition;
+        &:active {
+            @include box_shadow_inset;
+        }
 
-            &:active {
-                @include box_shadow_inset;
-            }
+        svg {
+            width: 22px;
+            height: 22px;
+            fill: #555;
+        }
+
+        span {
+            flex-grow: 0;
+            line-height: 25px;
+        }
+
+        &--above {
+            color: $color_green;
 
             svg {
-                width: 22px;
-                height: 22px;
-                fill: #555;
+                fill: $color_green;
             }
+        }
 
-            span {
-                flex-grow: 0;
-                line-height: 25px;
+        &--below {
+            color: $color_red;
+
+            svg {
+                fill: $color_red;
             }
         }
     }
 
     &__indicator {
-        @include border_wood(5px, 60deg);
-        @include box_shadow_raised;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) rotate(45deg);
         width: 25px;
         height: 25px;
-        background: $color_silver;
+        padding: 4px;
+        background: linear-gradient(45deg, #5e4225, #6a4b2a, #5e4225);
+
+        div {
+            @include box_shadow_raised;
+            width: 100%;
+            height: 100%;
+            background: $color_silver;
+        }
     }
 
     &--active {
         .combat-card__indicator {
-            background: $color_nefrit;
+            div {
+                background: $color_nefrit;
+            }
         }
 
         box-shadow: $box_shadow_main;
@@ -109,7 +127,9 @@
 
     &--wait {
         .combat-card__indicator {
-            background: $color_ruby;
+            div {
+                background: $color_ruby;
+            }
         }
     }
 
@@ -127,12 +147,8 @@
     }
 
     &--out {
-        border-image: none;
+        background: #333;
         box-shadow: none;
-
-        .combat-card__name {
-            background: #333;
-        }
 
         .combat-card__img {
             &::after {
@@ -142,9 +158,12 @@
         }
 
         .combat-card__indicator {
-            background: black;
-            border-image: none;
-            box-shadow: none;
+            background: #333;
+
+            div {
+                background: black;
+                box-shadow: none;
+            }
         }
     }
 }

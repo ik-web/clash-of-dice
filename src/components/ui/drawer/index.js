@@ -1,14 +1,10 @@
-import { defineComponent, ref, useTemplateRef } from 'vue';
+import { computed, defineComponent, ref, useTemplateRef } from 'vue';
 
 export default defineComponent({
     props: {
         open: {
             type: Boolean,
             required: true,
-        },
-        className: {
-            type: String,
-            default: '',
         },
     },
 

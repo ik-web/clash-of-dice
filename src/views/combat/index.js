@@ -26,8 +26,6 @@ export default defineComponent({
                     value: 'process',
                 };
 
-                console.log();
-
                 updateEncounter(encounter.id, { status: newStatus });
             }
         });

@@ -8,14 +8,14 @@ body {
 }
 
 a {
-    color: teal;
+    color: $color_green;
     text-decoration: none;
     font-family: $font_family_main;
     transition: color $transition;
 
     &:focus,
     &:hover {
-        color: teal;
+        color: $color_green;
     }
 }
 

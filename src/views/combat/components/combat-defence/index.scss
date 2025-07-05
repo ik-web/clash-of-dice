@@ -1,0 +1,78 @@
+@use '@/assets/scss/_vars.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+.combat-defence {
+    @include drawer_body;
+    width: 500px;
+
+    @include respond(laptop_l) {
+        width: 500px;
+    }
+
+    @include respond(laptop) {
+        width: 500px;
+    }
+
+    @include respond(tablet) {
+        width: 100vw;
+    }
+
+    &__body {
+        flex-grow: 1;
+    }
+
+    &__name {
+        margin-bottom: 5px;
+        font-family: $font_family_decor;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    &__name,
+    &__heading {
+        text-align: center;
+    }
+
+    &__heading {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    &__about {
+        width: max-content;
+        margin: 0 auto;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        line-height: 1;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        &-title {
+            font-weight: 600;
+        }
+    }
+
+    &__ac,
+    &__input {
+        width: 50px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    &__divider {
+        height: 1px;
+        margin: 20px 0;
+        background: $color_gray;
+    }
+
+    &__footer {
+        @include drawer_footer;
+    }
+}

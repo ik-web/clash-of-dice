@@ -1,13 +1,18 @@
 <template>
     <div class="unit">
-        <unit-img
-            alt="Image"
-            :src="formatImg(unit.image)"
-            :cover="!unit.class"
-        />
+        <div class="unit__img">
+            <unit-img
+                alt="Image"
+                :src="formatImg(unit.image)"
+                :cover="!unit.class"
+            />
+        </div>
 
         <div class="unit__info">
-            <div class="unit__name">
+            <div
+                class="unit__name"
+                :class="unit.class ? 'color-green' : 'color-red'"
+            >
                 {{ unit.name }}
             </div>
 
@@ -36,7 +41,7 @@
 
         <unit-menu class="unit__menu">
             <button
-                class="unit__menu-btn"
+                class="unit__menu-btn color-green"
                 @click="$emit('refresh', unit)"
             >
                 Refresh
@@ -49,7 +54,7 @@
                 Edit
             </button> -->
             <button
-                class="unit__menu-btn"
+                class="unit__menu-btn color-red"
                 @click="$emit('delete', unit.id)"
             >
                 Delete

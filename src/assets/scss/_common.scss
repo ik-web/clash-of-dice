@@ -1,0 +1,21 @@
+@use './vars' as *;
+
+.color-green {
+    color: $color_green;
+}
+
+.color-blue {
+    color: $color_blue;
+}
+
+.color-red {
+    color: $color_red;
+}
+
+.color-black {
+    color: black;
+}
+
+.color-white {
+    color: white;
+}

@@ -4,190 +4,190 @@
 $page-padding: 15px;
 
 .page-layout {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 
-	&__header {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		height: $height_header;
-		padding: 0 $page-padding;
-		background: black;
-		border-bottom: 2px solid red;
+    &__header {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: $height_header;
+        padding: 0 $page-padding;
+        background: black;
+        border-bottom: 2px solid red;
 
-		&-logo {
-			display: flex;
-			align-items: center;
-			column-gap: 2px;
+        &-logo {
+            display: flex;
+            align-items: center;
+            column-gap: 2px;
 
-			&-img {
-				display: block;
-				width: 50px;
-				height: 50px;
+            &-img {
+                display: block;
+                width: 50px;
+                height: 50px;
 
-				@include mobile {
-					width: 40px;
-					height: 40px;
-				}
-			}
+                @include respond(mobile) {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
 
-			&-text {
-				font-family: $font_family_decor;
-				font-size: 32px;
-				font-weight: 600;
-				line-height: 1;
-				color: white;
+            &-text {
+                font-family: $font_family_decor;
+                font-size: 32px;
+                font-weight: 600;
+                line-height: 1;
+                color: white;
 
-				@include tablet_large {
-					font-size: 28px;
-				}
+                @include respond(laptop) {
+                    font-size: 28px;
+                }
 
-				@include mobile {
-					font-size: 24px;
-				}
-			}
-		}
+                @include respond(mobile) {
+                    font-size: 24px;
+                }
+            }
+        }
 
-		&-menu {
-			display: flex;
-			align-items: center;
-			gap: 30px;
+        &-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
 
-			a {
-				text-transform: uppercase;
-				color: white;
+            a {
+                text-transform: uppercase;
+                color: white;
 
-				@include tablet_large {
-					font-size: 20px;
-				}
-			}
+                @include respond(laptop) {
+                    font-size: 20px;
+                }
+            }
 
-			@include tablet_large {
-				position: fixed;
-				top: 62px;
-				left: -100%;
-				bottom: 0;
-				z-index: 100;
-				flex-direction: column;
-				gap: 40px;
-				width: 100%;
-				padding: 40px 0;
-				background: #333;
-				transition: left $transition;
-			}
+            @include respond(laptop) {
+                position: fixed;
+                top: 62px;
+                left: -100%;
+                bottom: 0;
+                z-index: 100;
+                flex-direction: column;
+                gap: 40px;
+                width: 100%;
+                padding: 40px 0;
+                background: #333;
+                transition: left $transition;
+            }
 
-			@include mobile {
-				top: 52px;
-			}
+            @include respond(mobile) {
+                top: 52px;
+            }
 
-			a.is-active,
-			.page-layout__nav-link-active,
-			.router-link-active.router-link-exact-active {
-				color: cyan;
-				text-decoration: underline;
-				text-underline-offset: 4px;
-			}
+            a.is-active,
+            .page-layout__nav-link-active,
+            .router-link-active.router-link-exact-active {
+                color: cyan;
+                text-decoration: underline;
+                text-underline-offset: 4px;
+            }
 
-			&--active {
-				@include tablet_large {
-					display: flex;
-					left: 0;
-				}
-			}
+            &--active {
+                @include respond(laptop) {
+                    display: flex;
+                    left: 0;
+                }
+            }
 
-			&-btn {
-				display: none;
-				height: 32px;
-				padding: 4px 12px;
-				text-transform: uppercase;
-				background: transparent;
-				border: 1px solid white;
-				color: white;
+            &-btn {
+                display: none;
+                height: 32px;
+                padding: 4px 12px;
+                text-transform: uppercase;
+                background: transparent;
+                border: 1px solid white;
+                color: white;
 
-				&:focus {
-					border: 1px solid white;
-				}
+                &:focus {
+                    border: 1px solid white;
+                }
 
-				@include tablet_large {
-					display: block;
-				}
-			}
-		}
-	}
+                @include respond(laptop) {
+                    display: block;
+                }
+            }
+        }
+    }
 
-	&__navigation {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		justify-content: end;
-		gap: 30px;
-		height: 40px;
-		padding: 0 $page-padding;
-		background: #333;
+    &__navigation {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 30px;
+        height: 40px;
+        padding: 0 $page-padding;
+        background: #333;
 
-		a {
-			color: #aaa;
-		}
+        a {
+            color: #aaa;
+        }
 
-		.router-link-active.router-link-exact-active {
-			color: white;
-		}
+        .router-link-active.router-link-exact-active {
+            color: white;
+        }
 
-		@include mobile {
-			justify-content: center;
-		}
-	}
+        @include respond(mobile) {
+            justify-content: center;
+        }
+    }
 
-	&__main {
-		flex-grow: 1;
-		overflow: hidden;
+    &__main {
+        flex-grow: 1;
+        overflow: hidden;
 
-		&--home {
-			background: url('@/assets/img/lich.png') center / contain no-repeat;
-		}
+        &--home {
+            background: url('@/assets/img/lich.png') center / contain no-repeat;
+        }
 
-		&--encounters {
-			background: url('@/assets/img/dragonborn.png') center right / contain no-repeat;
-		}
+        &--encounters {
+            background: url('@/assets/img/dragonborn.png') center right / contain no-repeat;
+        }
 
-		&--encounters-encounter {
-			background: url('@/assets/img/dwarf.png') center right / contain no-repeat;
-		}
+        &--encounters-encounter {
+            background: url('@/assets/img/dwarf.png') center right / contain no-repeat;
+        }
 
-		&--encounters-combat {
-			background: url('@/assets/img/combat.jpg') center / cover no-repeat;
-		}
+        &--encounters-combat {
+            background: url('@/assets/img/combat.jpg') center / cover no-repeat;
+        }
 
-		&--parties {
-			background: url('@/assets/img/characters.png') center / contain no-repeat;
-		}
+        &--parties {
+            background: url('@/assets/img/characters.png') center / contain no-repeat;
+        }
 
-		&--bestiary {
-			background: url('@/assets/img/bestiary.webp') center right / contain no-repeat;
-		}
+        &--bestiary {
+            background: url('@/assets/img/bestiary.webp') center right / contain no-repeat;
+        }
 
-		&--settings {
-			background: url('@/assets/img/gnome.webp') center right / contain no-repeat;
-		}
+        &--settings {
+            background: url('@/assets/img/gnome.webp') center right / contain no-repeat;
+        }
 
-		&--score {
-			background: url('@/assets/img/book.webp') center right / contain no-repeat;
-		}
+        &--score {
+            background: url('@/assets/img/book.webp') center right / contain no-repeat;
+        }
 
-		&--not-found {
-			background: url('@/assets/img/skeleton.png') center / contain no-repeat;
-		}
-	}
+        &--not-found {
+            background: url('@/assets/img/skeleton.png') center / contain no-repeat;
+        }
+    }
 
-	&__overlay {
-		@include scroll_bar(gray);
-		height: 100%;
-		min-height: 100%;
-		padding: 15px;
-		background: rgba(255, 255, 255, 0.7);
-		overflow: auto;
-	}
+    &__overlay {
+        @include scroll_bar(gray);
+        height: 100%;
+        min-height: 100%;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.7);
+        overflow: auto;
+    }
 }
