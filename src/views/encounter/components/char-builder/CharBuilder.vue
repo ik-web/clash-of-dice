@@ -45,7 +45,7 @@
                                     <span>Experience:</span>
                                     <input
                                         type="number"
-                                        name="exp"
+                                        name="xp"
                                         v-model="formData.xp"
                                     />
                                 </label>
@@ -66,7 +66,7 @@
                                     <input
                                         type="number"
                                         name="hp"
-                                        v-model="formData.hp"
+                                        v-model="formData.defaultHP"
                                     />
                                 </label>
                             </div>
@@ -100,8 +100,8 @@
                                 {{ `${char.name} (${char.class})` }}
                             </span>
 
-                            <span>AC: {{ char.ac }}</span>
-                            <span>HP: {{ char.hp }}</span>
+                            <span>AC: {{ char.defaultAC }}</span>
+                            <span>HP: {{ char.defaultHP }}</span>
 
                             <div class="char-builder__char-actions">
                                 <v-button

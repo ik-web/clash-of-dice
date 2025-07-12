@@ -30,7 +30,7 @@
             <div class="unit__row">
                 <span>
                     <span>{{ 'Exp: ' }}</span>
-                    <span>{{ formatXP(unit.exp, unit.lvl) }}</span>
+                    <span>{{ formatEXP(unit.xp, unit.lvl) }}</span>
                 </span>
                 <span>
                     <span>{{ 'HP: ' }}</span>

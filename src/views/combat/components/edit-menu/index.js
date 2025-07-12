@@ -42,6 +42,7 @@ export default defineComponent({
                 ...props.unit,
                 currentAC: currentAC.value,
             });
+            emit('update:type', '');
         };
 
         const resetCurrentAC = () => {

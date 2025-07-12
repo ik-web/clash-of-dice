@@ -6,6 +6,7 @@ import challenges from '@/utils/challenges';
 import VDrawer from '@/components/ui/drawer/VDrawer.vue';
 import VSelect from '@/components/ui/select/VSelect.vue';
 import VButton from '@/components/ui/button/VButton.vue';
+import { useMonsterBuilderHelpers } from './use-helpers';
 
 export default defineComponent({
     components: { VDrawer, VSelect, VButton },
@@ -27,6 +28,15 @@ export default defineComponent({
         const selectedMonsters = ref([]);
 
         const challengeOptions = [{ label: 'All', value: 'all' }, ...challenges];
+        const {
+            getSpeed,
+            getStats,
+            getSenses,
+            getSpells,
+            getActions,
+            getSavesFromProficiencies,
+            getSkillsFromProficiencies,
+        } = useMonsterBuilderHelpers();
 
         const monstersList = computed(() =>
             monstersData.value.filter(m =>
@@ -56,11 +66,20 @@ export default defineComponent({
         const fetchMonsterByIndex = async index => {
             const response = await dndApiService.getMonsterByIndex(index);
             const monster = {
-                exp: response.xp,
+                xp: response.xp,
                 name: response.name,
                 type: response.type,
+                size: response.size,
                 image: response.image,
+                speed: response.speed,
+                alignment: response.alignment,
                 CR: response.challenge_rating,
+                languages: response.languages,
+                proficiencyBonus: response.proficiency_bonus,
+                damageImmunities: response.damage_immunities,
+                damageResistances: response.damage_resistances,
+                conditionImmunities: response.condition_immunities,
+                damageVulnerabilities: response.damage_vulnerabilities,
 
                 defaultAC: response.armor_class[0].value,
                 currentAC: response.armor_class[0].value,
@@ -71,6 +90,16 @@ export default defineComponent({
                 currentHP: response.hit_points,
 
                 initiative: null,
+
+                stats: getStats(response),
+                speed: getSpeed(response.speed),
+                senses: getSenses(response.senses),
+                actions: getActions(response.actions),
+                spells: await getSpells(response.special_abilities),
+                saves: getSavesFromProficiencies(response.proficiencies),
+                skills: getSkillsFromProficiencies(response.proficiencies),
+                passivePerception: response.senses.passive_perception || null,
+
                 data: response,
             };
 
@@ -83,7 +112,7 @@ export default defineComponent({
             if (existsMonster) {
                 existsMonster.count++;
             } else {
-                selectedMonsters.value.push({ ...monster, count: 1 });
+                selectedMonsters.value.unshift({ ...monster, count: 1 });
             }
         };
 
@@ -114,6 +143,7 @@ export default defineComponent({
 
                 emit('add', monsters);
                 emit('update:open', false);
+
                 selectedMonsters.value = [];
             } catch (error) {
                 throw error;

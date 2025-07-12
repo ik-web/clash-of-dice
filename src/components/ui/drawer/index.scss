@@ -17,17 +17,20 @@
         margin-top: $height_header;
         width: max-content;
         height: 100%;
-        padding: 40px 0;
+        padding: 30px 0;
         background: white;
         box-shadow: -1px 0 2px #555;
+        overflow: hidden;
 
-        @include respond(mobile) {
+        @include respond(tablet) {
             padding-bottom: 15px;
         }
     }
 
     &__btn-close {
         @include btn_close;
+        top: 0;
+        right: 0;
     }
 }
 

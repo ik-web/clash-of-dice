@@ -9,9 +9,9 @@ export const formatHP = unit => {
     return `${String(currentHP)}/${totalHP}`;
 };
 
-export const formatXP = (exp, lvl) => {
-    if (!lvl) return String(exp);
-    return `${exp}/${leveling[lvl]}`;
+export const formatEXP = (xp, lvl) => {
+    if (!lvl) return String(xp);
+    return `${xp}/${leveling[lvl]}`;
 };
 
 export const formatImg = img => {
