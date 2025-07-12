@@ -57,7 +57,7 @@
                                     <input
                                         type="number"
                                         name="ac"
-                                        v-model="formData.ac"
+                                        v-model="formData.defaultAC"
                                     />
                                 </label>
 
