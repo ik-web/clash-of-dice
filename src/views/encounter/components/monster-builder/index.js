@@ -53,14 +53,90 @@ export default defineComponent({
             }
         };
 
+        const getStat = stat => {
+            return {
+                count: stat,
+                mod: Math.floor((stat - 10) / 2),
+            };
+        };
+
+        const getActions = data => {
+            const actions = (data || []).map(action => {
+                const name = action.name;
+                const desc = action.desc;
+
+                let hit_bonus = null;
+                let damage = null;
+
+                if (action.attack_bonus !== undefined) {
+                    hit_bonus = action.attack_bonus;
+                }
+
+                if (Array.isArray(action.damage) && action.damage.length > 0) {
+                    const first = action.damage[0];
+                    damage = first.damage_dice || null;
+                }
+
+                return { name, desc, hit_bonus, damage };
+            });
+
+            return actions;
+        };
+
+        const getSpellDesc = async spell => {
+            if (!spell.url) return null;
+
+            try {
+                const res = await fetch(`https://www.dnd5eapi.co${spell.url}`);
+                const data = await res.json();
+                console.log(data.desc?.join('\n') || null);
+
+                return data.desc?.join('\n') || null;
+            } catch (error) {
+                console.error(`Failed to fetch ${spell.name}:`, error);
+                return null;
+            }
+        };
+
+        const getSpells = async data => {
+            const spellcastingAbility = (data || []).find(ability =>
+                ability.name.toLowerCase().includes('spellcasting'),
+            );
+
+            const spells = [];
+
+            if (spellcastingAbility && spellcastingAbility.spellcasting) {
+                for (const spell of spellcastingAbility.spellcasting.spells || []) {
+                    const desc = await getSpellDesc(spell);
+
+                    spells.push({
+                        desc,
+                        name: spell.name,
+                        level: spell.level,
+                    });
+                }
+            }
+
+            return spells;
+        };
+
         const fetchMonsterByIndex = async index => {
             const response = await dndApiService.getMonsterByIndex(index);
             const monster = {
-                exp: response.xp,
+                xp: response.xp,
                 name: response.name,
                 type: response.type,
+                size: response.size,
                 image: response.image,
+                speed: response.speed,
+                alignment: response.alignment,
                 CR: response.challenge_rating,
+                languages: response.languages,
+                proficiencyBonus: response.proficiency_bonus,
+                damageImmunities: response.damage_immunities,
+                damageResistances: response.damage_resistances,
+                conditionImmunities: response.condition_immunities,
+                damageVulnerabilities: response.damage_vulnerabilities,
 
                 defaultAC: response.armor_class[0].value,
                 currentAC: response.armor_class[0].value,
@@ -71,6 +147,18 @@ export default defineComponent({
                 currentHP: response.hit_points,
 
                 initiative: null,
+
+                stats: {
+                    STR: getStat(response.strength),
+                    DEX: getStat(response.dexterity),
+                    CON: getStat(response.constitution),
+                    INT: getStat(response.intelligence),
+                    WIS: getStat(response.wisdom),
+                    CHA: getStat(response.charisma),
+                },
+
+                actions: getActions(response.actions),
+                spells: await getSpells(response.special_abilities),
                 data: response,
             };
 

@@ -1,5 +1,5 @@
 import { defineComponent, onBeforeMount, onMounted, ref, useTemplateRef } from 'vue';
-import { formatHP, formatImg, formatXP, formatCR } from '@/utils/formatter';
+import { formatHP, formatImg, formatEXP, formatCR } from '@/utils/formatter';
 import VButton from '@/components/ui/button/VButton.vue';
 import UnitImg from '@/components/shared/unit-img/UnitImg.vue';
 import UnitMenu from '@/components/shared/unit-menu/UnitMenu.vue';
@@ -47,7 +47,7 @@ export default defineComponent({
 
         return {
             formatHP,
-            formatXP,
+            formatEXP,
             formatCR,
             formatImg,
 

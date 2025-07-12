@@ -9,7 +9,7 @@ import { dndApiService } from '@/services/dnd-api';
 
 const getCharForm = () => ({
     id: '',
-    exp: 0,
+    xp: 0,
     lvl: 1,
     name: null,
     image: null,
@@ -61,10 +61,10 @@ export default defineComponent({
         const getExpByLevel = lvl => {
             if (formData.value.xp >= leveling[lvl]) {
                 return leveling[lvl] - 1;
-            } else if (formData.value.exp < leveling[lvl - 1]) {
+            } else if (formData.value.xp < leveling[lvl - 1]) {
                 return leveling[lvl - 1];
             } else {
-                return formData.value.exp;
+                return formData.value.xp;
             }
         };
 
@@ -82,11 +82,11 @@ export default defineComponent({
             const minAC = 10;
             const minHP = charData.hit_die;
 
-            const computedXP = +form.exp < 0 ? 0 : getExpByLevel(form.lvl);
+            const computedXP = +form.xp < 0 ? 0 : getExpByLevel(form.lvl);
             const computedAC = +form.defaultAC <= 0 ? minAC : +form.defaultAC;
             const computedHP = +form.defaultHP <= 0 ? minHP : +form.defaultHP;
 
-            form.exp = computedXP;
+            form.xp = computedXP;
             form.image = getClassImage(form.class);
 
             form.currentAC = computedAC;
