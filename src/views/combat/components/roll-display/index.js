@@ -1,9 +1,10 @@
 import { computed, defineComponent, ref, toRefs, watch } from 'vue';
 import { useRollStore } from '@/store/roll';
 import VModal from '@/components/ui/modal/VModal.vue';
+import VButton from '@/components/ui/button/VButton.vue';
 
 export default defineComponent({
-    components: { VModal },
+    components: { VModal, VButton },
     emits: ['close'],
 
     setup() {

@@ -6,12 +6,9 @@
 }
 
 .roll-display {
-    // @include ellipsis;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
+    width: max-content;
+    margin: 0 auto;
+    min-height: 102px;
     text-align: center;
     font-size: 24px;
     font-weight: 600;
@@ -20,5 +17,10 @@
 
     @include respond(mobile) {
         font-size: $font_size_main;
+    }
+
+    &__btn {
+        width: 100%;
+        margin-top: 30px;
     }
 }

@@ -6,9 +6,17 @@
         @close="onClose"
     >
         <div class="roll-display">
-            <span v-show="open">
-                {{ result }}
-            </span>
+            <div v-show="open">
+                <span>{{ result }}</span>
+                <v-button
+                    class="roll-display__btn"
+                    color="gray"
+                    title="Close"
+                    label="Close"
+                    upper
+                    @click="onClose"
+                />
+            </div>
         </div>
     </v-modal>
 </template>
