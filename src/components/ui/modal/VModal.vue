@@ -1,8 +1,8 @@
 <template>
     <transition name="fade">
         <div
-            v-show="open"
             class="modal"
+            v-show="open"
         >
             <div
                 :class="`modal__container ${className}`"

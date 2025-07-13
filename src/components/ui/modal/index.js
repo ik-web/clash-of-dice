@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, onUnmounted } from 'vue';
 
 export default defineComponent({
     props: {
@@ -23,6 +23,20 @@ export default defineComponent({
             emit('close', false);
         };
 
-        return { closeModal };
+        const onPressEsc = e => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        };
+
+        onMounted(() => {
+            window.addEventListener('keydown', onPressEsc);
+        });
+
+        onUnmounted(() => {
+            window.removeEventListener('keydown', onPressEsc);
+        });
+
+        return { onPressEsc, closeModal };
     },
 });
