@@ -10,6 +10,10 @@ export default defineComponent({
             type: String,
             default: '450px',
         },
+        className: {
+            type: String,
+            default: '',
+        },
     },
 
     emits: ['close'],

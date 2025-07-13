@@ -8,6 +8,11 @@
                 :active="false"
             />
         </div>
+
+        <roll-display
+            :result="rollResult"
+            @close="resetRollResult"
+        />
     </page-layout>
 </template>
 

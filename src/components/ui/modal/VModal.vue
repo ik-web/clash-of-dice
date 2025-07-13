@@ -5,7 +5,7 @@
             class="modal"
         >
             <div
-                class="modal__container"
+                :class="`modal__container ${className}`"
                 aria-modal="true"
                 :style="`max-width: ${width};`"
             >
@@ -21,4 +21,4 @@
 </template>
 
 <script src="./index.js"></script>
-<style src="./index.scss" scoped></style>
+<style src="./index.scss"></style>
