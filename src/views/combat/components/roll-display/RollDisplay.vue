@@ -2,11 +2,13 @@
     <v-modal
         className="roll-modal"
         width="400px"
-        :open="!!result"
-        @close="$emit('close')"
+        :open="open"
+        @close="onClose"
     >
         <div class="roll-display">
-            {{ result }}
+            <span v-show="open">
+                {{ result }}
+            </span>
         </div>
     </v-modal>
 </template>

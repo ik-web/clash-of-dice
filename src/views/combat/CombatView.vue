@@ -9,10 +9,7 @@
             />
         </div>
 
-        <roll-display
-            :result="rollResult"
-            @close="resetRollResult"
-        />
+        <roll-display />
     </page-layout>
 </template>
 

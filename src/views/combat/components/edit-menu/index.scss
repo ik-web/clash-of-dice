@@ -66,5 +66,9 @@
                 grid-template-columns: 45px 1fr 45px;
             }
         }
+
+        &[data-initiative] {
+            margin: auto 0 5px;
+        }
     }
 }

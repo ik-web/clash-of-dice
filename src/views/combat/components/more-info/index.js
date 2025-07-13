@@ -17,8 +17,6 @@ export default defineComponent({
     },
 
     setup(props) {
-        console.log(props.unit);
-
         const isDamageImmunities = computed(
             () => props.unit.damageImmunities && props.unit.damageImmunities.length,
         );

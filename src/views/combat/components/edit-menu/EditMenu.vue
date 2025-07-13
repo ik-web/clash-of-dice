@@ -103,7 +103,21 @@
                 />
             </div>
 
-            <div class="combat-card-edit__row combat-card-edit__row">
+            <div
+                class="combat-card-edit__row"
+                data-initiative
+            >
+                <v-button
+                    v-if="!unit.class && !unit.initiative"
+                    color="gray"
+                    title="Roll initiative"
+                    label="Roll"
+                    bold
+                    @click="onInitiativeRoll"
+                />
+            </div>
+
+            <div class="combat-card-edit__row">
                 <v-button
                     v-if="unit.initiative"
                     color="gray"

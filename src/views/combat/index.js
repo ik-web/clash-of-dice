@@ -4,8 +4,6 @@ import { useEncounterStore } from '@/store/encounter';
 import PageLayout from '@/components/layout/PageLayout.vue';
 import CombatCard from './components/combat-card/CombatCard.vue';
 import RollDisplay from './components/roll-display/RollDisplay.vue';
-import { useRollStore } from '@/store/roll';
-import { storeToRefs } from 'pinia';
 
 export default defineComponent({
     components: {
@@ -17,10 +15,7 @@ export default defineComponent({
     setup() {
         const route = useRoute();
         const router = useRouter();
-        const rollStore = useRollStore();
         const encounterStore = useEncounterStore();
-        const { rollResult } = storeToRefs(rollStore);
-        const { resetRollResult } = rollStore;
         const { getEncounter, updateEncounter } = encounterStore;
 
         const encounter = getEncounter(route.params.id);
@@ -40,6 +35,6 @@ export default defineComponent({
             }
         });
 
-        return { units, rollResult, resetRollResult };
+        return { units };
     },
 });

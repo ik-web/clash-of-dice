@@ -1,6 +1,7 @@
-import { computed, defineComponent, ref, watch } from 'vue';
+import { computed, defineComponent, ref, toRefs, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { formatHP } from '@/utils/formatter';
+import { useRollStore } from '@/store/roll';
 import { useEncounterStore } from '@/store/encounter';
 import VButton from '@/components/ui/button/VButton.vue';
 
@@ -22,7 +23,10 @@ export default defineComponent({
 
     setup(props, { emit }) {
         const route = useRoute();
+        const rollStore = useRollStore();
         const encounterStore = useEncounterStore();
+        const { total: rollResult } = toRefs(rollStore.state);
+        const { rollDices } = rollStore;
         const { updateEncounterUnit } = encounterStore;
 
         const currentAC = ref('');
@@ -117,7 +121,11 @@ export default defineComponent({
 
         // Unit initiative =====================================
         const setInitiative = () => {
-            if (!initiative.value || props.unit.initiative) return;
+            if (!initiative.value || props.unit.initiative) {
+                emit('update:type', '');
+                return;
+            }
+
             if (initiative.value > 99) initiative.value = 99;
             if (initiative.value < 0) initiative.value = null;
 
@@ -129,6 +137,15 @@ export default defineComponent({
             emit('update:type', '');
         };
 
+        const onInitiativeRoll = () => {
+            const mod = props.unit.stats?.DEX?.mod || 0;
+
+            rollDices('1d20', mod);
+
+            initiative.value = rollResult.value;
+        };
+
+        // =====================================================
         const setPropsStats = type => {
             if (type === 'AC') {
                 currentAC.value = props.unit.currentAC;
@@ -167,6 +184,7 @@ export default defineComponent({
             changeOverrideHP,
 
             setInitiative,
+            onInitiativeRoll,
         };
     },
 });
